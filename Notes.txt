@@ -11,20 +11,13 @@ https://developer.mozilla.org/bm/docs/Web/JavaScript
 http://kangax.github.io/compat-table/es6/
 
 ----------------------------------------------------------------------
-
 .js is
-
-
     - client-side language for web-page on browser
     - server-side language on Node.js
-
     +
-
     - Mobile Native Appln with tool support
     - Desktop Appln with Electron
-
 ----------------------------------------------------------------------
-
 
  .js Features
 
@@ -70,7 +63,6 @@ How to run .js program ?
 
 ----------------------------------------------------------------------
 
-
 JS - topics
 ------------
 Level-1:
@@ -91,7 +83,6 @@ Level-4:
     => Async APIs ( Promise , RxJS , ..)
 Level-5:
     => Tools
-    
 ------------------------------------------------------------
 
 
