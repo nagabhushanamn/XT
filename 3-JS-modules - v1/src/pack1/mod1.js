@@ -10,7 +10,7 @@
 //--------------------------------------------------------
 var sapient = sapient || {};
 (function () {
-    sapient.mod2.doWork();
+    sapient.mod2.doWork(); 
     var i = 0;
     var o = {
         doWork: function () {
