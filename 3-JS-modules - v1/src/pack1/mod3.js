@@ -1,6 +1,6 @@
 
 
-
+//--------------------------------------------------------
 // var o={
 //     doWork:function(){
 //         console.log("im mod1");  
@@ -8,12 +8,14 @@
 // }
 
 //--------------------------------------------------------
-var sapient = sapient || {};
+
+var oneGlobal = oneGlobal || {};
+
 (function () {
     var o = {
         doWork: function () {
             console.log("im mod2");
         }
     }
-    sapient.mod3 = o;
+    oneGlobal.mod3 = o;
 })();

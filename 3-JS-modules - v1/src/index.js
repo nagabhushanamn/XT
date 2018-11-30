@@ -5,8 +5,8 @@ console.log('-index.js-')
 //--------------------------------------------------
 
 
-var sapient = sapient || {};
-sapient.mod1.doWork();
+var oneGlobal = oneGlobal || {};
+oneGlobal.mod1.doWork();
 
 //--------------------------------------------------
  

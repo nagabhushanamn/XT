@@ -1,19 +1,26 @@
 "use strict"
 
-// till ES5
+console.log('-OOP-');
 
-// function Person(name, age) {
-//     this.name = name;
-//     this.age = age;
-// }
-// Person.prototype.sayName = function () {
-//     console.log('im ' + this.name)
-// }
-// Person.prototype.sayAge = function () {
-//     console.log('im ' + this.age + " old ")
-// }
+// -------------------------------------------
+// class
+// -------------------------------------------
 
-// from Es6
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+Person.prototype.sayName = function () {
+    console.log('im ' + this.name)
+}
+Person.prototype.sayAge = function () {
+    console.log('im ' + this.age + " old ")
+}
+
+
+// -------------------------------------------
+// class ( from es6 )
+// -------------------------------------------
 
 class Person {
     constructor(name, age) {
@@ -29,7 +36,7 @@ class Person {
     }
 }
 
-// var p1 = new Person('Nag', 35)
+// -------------------------------------------
 
 class Employee extends Person {
     constructor(name, age, salary) {
@@ -45,7 +52,7 @@ class Employee extends Person {
     }
 }
 
-// let e = new Employee('Nag', 35, 1000.00);
+// -------------------------------------------
 
 class Boss extends Employee {
     askForBonus() {
@@ -55,6 +62,7 @@ class Boss extends Employee {
 
 let boss = new Boss('Nag', 35, 1000)
 
+// -------------------------------------------
 
 class Abc {
     static staMethod() {
@@ -69,24 +77,12 @@ Abc.staVar2 = 2
 
 Abc.staMethod();
 
-
 let abc = new Abc();
-
-// class Product {
-
-//     constructor(id, name) {
-//         this.id = id;
-//         this.name = name;
-//     }
-
-// }
-// let p = new Product();
-
 
 
 //------------------------------------------
-
-
+// accessor properties
+//------------------------------------------
 
 let person = {
 
@@ -110,3 +106,6 @@ let person = {
 
 person.name = "Nag N"
 console.log(person.name)
+
+
+// -------------------------------------------

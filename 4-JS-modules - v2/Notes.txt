@@ -1,33 +1,21 @@
 
 ---------------------------------------------------------------
-
-.js developement without module standards & loaders
+.js developement without module standard & loader
+---------------------------------------------------------------
 
 Problems:
 
 ==> global naming collisions
-==> loading dependency modules in order is manual
+==> loading dependency modules before dependent using them
 
 
 ---------------------------------------------------------------
-
-
-from third-parties , we got module standards & loaders
-
+Soln: => from third-parties , we got module standards & loaders
+---------------------------------------------------------------
 
 - AMD ( Async Module Definition ) spec
-
-    loader : require.js /  dojo.js , etc...
-
 - UMD
-
-- commonJS    ( most used )
-
-
-
-from ECMAScript spec , in ES6
-
-- ES module standard
+- commonJS    ( popular standard )
 
 
 
@@ -36,10 +24,10 @@ from ECMAScript spec , in ES6
 ---------------------------------------------------------------
 
 -> by default, every .js file is module
--> by default, all var(s) & function(s) in .js file are private
+-> by default, all var(s) & functions in .js file are private
 -> to abstract/export any member(s), use 'module.exports' object
 -> to require/import any module , use 'require()' function
--> group related modules into package with description  file 'package.json'
+-> group related modules as package with description  file 'package.json'
 
 
 imp-note : Node.js runtime implemented this standard as default module standard.
@@ -47,6 +35,8 @@ imp-note : Node.js runtime implemented this standard as default module standard.
 --------------------------------------------------------------
 
 
+
+---------------------------------
 NPM ( Node Package Manager) tool
 ---------------------------------
 
@@ -57,21 +47,16 @@ NPM ( Node Package Manager) tool
 
 why we need ?
 
- --> to publish .js-packages to NPM-repository  ( if package is open source)
+ --> to publish .js-packages to NPM-repository  ( if package is open-source)
  --> to install .js-packages from NPM-repository
 
  --> to manage build-cycle ( i.e start, compile , test , build-for-production , start-dev-server, ...)
-
-
-
-imp-note : NPM treats complete project as one package
-
 
 --------------------------------------------------------------
 
 
 
- module bundler tools
+ module-bundle tools
  ---------------------
 
     e.g
@@ -80,10 +65,12 @@ imp-note : NPM treats complete project as one package
     => webpack
      
 
+--------------------------------------------------------------     
 
 
-ECMAScript spec
 
+--------------------------------------------------------------
+From ECMAScript spec
 ---------------------------------------------------------------
 // ES module standard
 ---------------------------------------------------------------
@@ -93,5 +80,7 @@ ECMAScript spec
 -> to abstract/export any member(s), use 'export' keyword
 -> to require/import any module , use 'import' keyword
 -> group related modules into package with description  file 'package.json'
+
+--------------------------------------------------------------
 
 

@@ -1,5 +1,7 @@
 
+//------------------------------------------
 // Model
+//------------------------------------------
 
 class Todo {
     constructor(title, date) {
@@ -11,7 +13,11 @@ class Todo {
     }
 }
 Todo.nextId = 0;
+
+//------------------------------------------
 // Service
+//------------------------------------------
+
 class TodosService {
     constructor() {
         this.todos = []
@@ -41,4 +47,13 @@ class TodosService {
     }
 }
 
-const service=new TodosService();
+//------------------------------------------
+
+const service = new TodosService();
+
+
+service.addTodo('Learn Javascript ')
+service.addTodo('Learn Java')
+service.addTodo('Learn Life ')
+
+//------------------------------------------
