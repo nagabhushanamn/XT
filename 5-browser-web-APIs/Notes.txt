@@ -1,26 +1,23 @@
 
 // Front-End-Developer
 ----------------------------------------------------------
-
  UI  ==> content/data + style + behavior
-
 
  content  ==> HTML
  style    ==> CSS
  behavior ==> javascript
 
-
 ---------------------------------------------------------------------------------------
 
- what .js-lang can do on HTML-page in browser envi?
+
+what .js-lang can do on HTML-page in browser envi?
 
 
 using browser provided web-APIs,
 JavaScript-lang can bring any dynamic activity/data to web-page
 
-
 browser-APIs :  ==> are based on 'w3c' recommendations
-they are implemented nativly by browser & abstracted as JavaScript objects & functions
+implemented nativly by browser vendors & abstracted as JavaScript objects & functions
 
 
 browser-APIs  :

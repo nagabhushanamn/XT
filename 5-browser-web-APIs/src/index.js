@@ -41,7 +41,7 @@ todosBtn.addEventListener('click', e => {
 
     let todoListEle = document.getElementById('todo-list');
     let apiurl = 'https://jsonplaceholder.typicode.com/todos?_limit=5';
-    let promise = fetch(apiurl)
+    let promise = fetch(apiurl)  // IO
     promise
         .then(response => response.json())
         .then(todos => {
