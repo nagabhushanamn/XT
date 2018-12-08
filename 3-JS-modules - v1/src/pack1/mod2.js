@@ -1,19 +1,22 @@
 
 
+//--------------------------------------------------------
 
 // var o={
 //     doWork:function(){
-//         console.log("im mod1");  
+//         console.log("im mod2");  
 //     }
 // }
 
 //--------------------------------------------------------
-var sapient = sapient || {};
+
+var oneGlobal = oneGlobal || {};
 (function () {
+    oneGlobal.mod3.doWork();
     var o = {
         doWork: function () {
             console.log("im mod2");
         }
     }
-    sapient.mod3 = o;
+    oneGlobal.mod2 = o;
 })();
