@@ -1,9 +1,11 @@
-console.log('-index.js-')
+// console.log('-index.js-')
 import 'bootstrap/dist/css/bootstrap.css';
 
 // import {} from './promise-api'
 
-import {} from './rxjs-learn'
+// import {} from './rxjs-learn-v2'
+
+import {} from './generator-func'
 
 // #1
 
