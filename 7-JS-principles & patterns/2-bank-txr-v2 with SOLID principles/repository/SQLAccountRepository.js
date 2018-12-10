@@ -13,12 +13,10 @@ class SQLAccountRepository {
         console.log("loading account " + num);
         return new Account(num, 1000.00)
     }
-
     updateAccount(account) {
         //..
         console.log("updating account " + account.num);
     }
-
 }
 
 // export default SQLAccountRepository;

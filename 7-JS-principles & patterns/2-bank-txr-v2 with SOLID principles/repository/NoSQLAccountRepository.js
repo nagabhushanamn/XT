@@ -7,7 +7,6 @@ class SQLAccountRepository {
     constructor() {
         console.log("SQLAccountRepository instance cteated..");
     }
-
     loadAccount(num) {
         //...
         console.log("loading account " + num);

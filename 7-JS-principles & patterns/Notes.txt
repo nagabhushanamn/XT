@@ -2,7 +2,8 @@
 --------------------------------------
 Money Transfer System
 --------------------------------------
-step-1 : identify data-model / entity
+
+step-1 : identify data-model 
 
 step-2 : layer(s)
 
@@ -35,5 +36,14 @@ I — Interface segregation principle
 D — Dependency Inversion principle    
 
 
+
+---------------------
+OO Patterns
+---------------------
+
+
+1- creational
+2- behavioral
+3- structural
 
 
