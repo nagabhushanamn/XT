@@ -43,7 +43,25 @@ OO Patterns
 
 
 1- creational
+
+        => solutions to create objects effectively
+
+
+        a. singleton
+        b. factory
+        c. abstract factory
+        d. builder
+        e. prototype
+
 2- behavioral
+
+        => on event, how other objects should react
+
 3- structural
+
+        => how one object connect with other
+
+
+4-  Functional style pattern       
 
 
