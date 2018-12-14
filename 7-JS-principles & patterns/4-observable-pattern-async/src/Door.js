@@ -16,12 +16,12 @@ class Door {
     open() {
         console.log("door opened...");
         let event = { num: this.num, type: 'open' };
-        doorStream.next(event)
+        doorStream.next(event) // push
     }
     close() {
         console.log("door closed..");
         let event = { num: this.num, type: 'close' };
-        doorStream.next(event)
+        doorStream.next(event) // push
     }
 
 } 
