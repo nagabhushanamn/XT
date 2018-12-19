@@ -1,0 +1,334 @@
+
+
+--------------------------------------
+web-ui
+--------------------------------------
+
+ UI  ==> content/data + style + behavior
+
+
+ content  ==> HTML
+ style    ==> CSS
+ behavior ==> javascript
+
+
+
+---------------------------------------------------------------------------------------
+
+
+what .js-lang can do on HTML-page in browser envi?
+
+
+using browser provided web-APIs,
+JavaScript-lang can bring any dynamic activity/data to web-page
+
+
+browser-APIs :  ==> are based on 'w3c' recommendations,
+implemented nativly by browser vendors & abstracted as JavaScript objects & functions
+
+
+browser-APIs  :
+    ==> DOM, XHR,Timer,....
+
+
+using DOM
+---------------
+ -> can create,retreive,update,delete HTML elements
+ -> can change element's inner text/html content 
+ -> can change element's attributes/properties
+ -> can change element's styles ( css )
+ -> can validate form-fields before submit to server-program
+ -> can create rich UI-components like  autocomplete, calenders,..
+ -> can listen any events on element
+
+using XHR
+---------
+ -> can communicate with server-side programs async ( AJAX )
+
+using Timer API
+----------------
+-> can execute any action on timeout/time-interval
+
+HTML5 APIs
+------------------
+ - https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5
+
+
+
+
+
+problems/limitations with plain-js ( your-code ) with browser-apis
+------------------------------------------------------------------
+
+==> browser compatability issues
+     http://www.caniuse.com
+
+==> memory mamanagement issues need to handle manualy
+    (i.e clean un-used/invisible DOM elements)
+
+==> performance issues shud take care manually 
+    (i.e DOM access should be minimal )
+
+==> data-binding is manual  
+
+==> too much code for simple operation
+
+==> code oraganization is difficult
+
+
+
+----------------------------------------------------------
+ legacy soln:
+
+    ==> using server-side page techonolgies
+
+            i.e JSP, ASP, PHP , freemarker, Rails,..,...,....
+    
+    
+    Problems:
+
+    => on every request, server-side-programs  
+       need to re-construct same UI-layout/page with new content,keeping client-state
+   
+    => on every request, server programs txring same static resources, 
+       this will increase n/w bandwidth   
+
+    => on every new-page response, browser reloads current page with new-page  
+
+----------------------------------------------------------
+    
+----------------------------------------------------------
+
+ best-soln:
+
+    => using client-side(browser) page technolgies    
+
+    
+        how?
+
+           -> js-language imroved lot
+           -> new APIS from w3c like storage,... api
+           -> browser also following standards in uniform way..
+
+        +
+    
+
+        ==> using third-party's .js Lib & Frameworks       
+     
+        
+
+        Utility lib
+        --------------------------------
+
+        1. jQuery
+
+                ==> DOM + AJAX utility lib 
+
+
+
+        MVC / MVVM based lib & frameworks
+        ---------------------------------
+
+        1. DOJO
+        2. Ext.js from sencha  ( commercial )
+
+        1. knockout.js
+        2. backbone.js  / marionettejs
+        3. ember.js
+        4. YUI
+        5. Angular.js 1.x    from google-team
+
+
+        ......
+
+       ------------------------------------------------------
+        w3c      ==> web-component spec  ( draft )
+
+                  - web-component/custom-html-element  
+
+                arch  ==> component arch
+
+        ------------------------------------------------------
+
+
+        component-arch based lib & F.w
+        -----------------------------------------        
+
+        1. react.js    from facebook       : v16   ( our focus  )
+        2. Angular     from google-team    : v7
+
+        3. Vue.js
+        4. Ember.js
+        5. Aurelia.js
+        6. polymer.js
+
+        ......
+
+        ------------------------------------------------------
+
+
+        library
+
+                ==> with utility methods => we should build things
+
+        framework
+
+                => utility methods + ready structure  => we develop  things      
+
+
+
+        ------------------------------------------------------
+
+
+
+        component based architecture
+        -----------------------------
+
+        in web-UI ,
+
+        what is component ?
+        -------------------
+
+        Independent UI-fragement in web-page
+        with single-responsibility
+
+
+        e.g
+
+        Box, Input,....
+
+
+        is HTML element(s) follows component based arch ?  Yes
+
+
+        ==> HTML tag/element/component
+
+                =>dom-element is individual component
+
+
+        ==> every html-tag/element/component
+        is an instance of HTMLXXXElement class
+
+        e.g
+
+        <div></div>  instanceof 'HTMLDivElement' class
+
+        i.e
+
+        HTMLDivElement      ==> HTML-component-class
+        <div></div>         ==> HTML-component-instance
+
+        HTMLInputElement    ==> HTML-component-class
+        <input/>            ==> HTML-component-instance
+
+
+         adv of component arch in web-ui
+         ------------------------------------        
+        ==> easy to nest multiple component(s) together
+            without any complexity/pollution
+
+
+
+
+        -------------------------------------
+        html-component properties/attributes
+        -------------------------------------
+
+
+        div component
+
+                - id
+                - class
+                - innerHTML
+
+        input component
+
+                - id 
+                - class
+                - type 
+
+        ......           
+
+
+        imp-note :
+        
+        => parent-component can any child-component with properties 
+
+        i.e
+
+        immutable-value(s) given by parent-component to child-component 
+        while instantiatiing/re-rendering   
+
+
+        -------------------------------------
+        types of html-components
+        -------------------------------------
+
+        ==> mutable data on component
+
+        1. stateless components   e.g   <div>, <hr/>
+        2. statefull components   e.g   <input /> , <canvas> , <audio /> ...
+
+        imp-note :
+        
+          ==> when component's state changes, always will re-render
+
+
+                
+        -------------------------------------------------
+
+        in component based arch  
+                ==> uni-directional data-flow
+
+        parent --> child : data/props will go down
+        child  --> parent : action/event will come up
+
+
+
+        --------------------------------------------------
+
+        --------------------------------------------------
+
+        by default HTML/borwser-DOM, 
+        follows component architecture
+
+        --------------------------------------------------
+
+
+        somtimes we need components like these   
+
+        - Product
+        - Review
+        - Login
+        - Cart
+        - XXX
+        - DatePicker
+        .....
+
+
+        to create this kind custom components,
+        we use React.js. Angular.js,.... Library
+
+
+        --------------------------------------------------
+
+
+---------------------------------------------------------------------------
+summary
+        in web-ui
+
+        =>each functionality within a web page can be separated 
+        in terms of individual components.
+
+
+---------------------------------------------------------------------------
+
+
+
+
+
+         
+
+
+
+
