@@ -325,7 +325,15 @@ summary
 
 
 
-
+        - react-lib api
+        - case-study with react-only
+        - redux
+        - react-redux
+        - react design patterns
+        - tuning
+        - browser HTML5 APIs
+        - memory mamanagement & performance tuning
+        - freeze
 
          
 

@@ -1,0 +1,11 @@
+
+
+
+react-components
+-----------------
+
+
+  - properties  
+
+
+        => immutable data given while instantiaiting & re-rendering

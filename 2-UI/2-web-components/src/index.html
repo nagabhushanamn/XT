@@ -11,32 +11,11 @@
 <body class="container">
 
     <hr />
-    <h1> web components</h1>
+    <h1>web components by React</h1>
     <hr />
 
-    <div id="box1" class="alert alert-info">
-        <input id="inp1" type="number" onchange="handleChangeByDiv()" />
-        <hr />
-        <span id="displayEle" class="badge badge-primary">0</span>
+    <div id="root">
     </div>
-
-    <script>
-
-        let inp1 = document.getElementById('inp1')
-        let count = 0;
-        setInterval(() => {
-            count++;
-            inp1.value = count; // on state change
-            inp1.dispatchEvent(new Event('change')) // dispaching 'change' event
-        }, 2000);
-
-        function handleChangeByDiv() {
-            document.getElementById('displayEle').innerHTML = count;
-        }
-
-
-    </script>
-
 
 </body>
 
