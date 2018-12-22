@@ -1,19 +1,34 @@
 import React, { Component } from 'react';
 import classNames from 'classnames'
+import Review from './Review';
 
 class Product extends Component {
     constructor(props) {
         super(props)
         this.state = {
             currentTab: 1,
+            reviews: [
+                { stars: 5, author: 'who@mail.com', body: 'sample-review-1' },
+                { stars: 1, author: 'who@mail.com', body: 'sample-review-2' }
+            ]
         }
     }
     changeTab(tabIndex) {
-        this.setState({ currentTab: tabIndex })
+        this.setState({ currentTab: tabIndex }, () => {
+            if (tabIndex === 3) {
+                //..
+            }
+        })
     }
     renderBuyBtn(product) {
         if (product.canBuy) return <button className="btn btn-sm btn-primary">buy</button>
         else return null;
+    }
+    renderReviews() {
+        let { reviews } = this.state;
+        return reviews.map((item, idx) => {
+            return <Review key={idx} item={item} />
+        });
     }
     renderTabPanel(item) {
         let { currentTab } = this.state;
@@ -28,7 +43,7 @@ class Product extends Component {
                 break;
             }
             case 3: {
-                panel = (<div>None Yet</div>)
+                panel = (<div>{this.renderReviews()}</div>)
                 break;
             }
             default: panel = null;
