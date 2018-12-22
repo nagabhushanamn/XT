@@ -21,8 +21,22 @@ class Product extends Component {
             }
         })
     }
+    handleBuy() {
+        let { item, onBuy } = this.props;
+        let qty = this.refs.qty.value
+        if (onBuy) {
+            onBuy(item, qty)
+        }
+    }
     renderBuyBtn(product) {
-        if (product.canBuy) return <button className="btn btn-sm btn-primary">buy</button>
+        if (product.canBuy)
+            return (
+                <div>
+                    <button onClick={e => this.handleBuy()} className="btn btn-sm btn-primary">buy</button>
+                    &nbsp;
+                    <input  min="2" max="3" type="number" ref="qty" />
+                </div>
+            )
         else return null;
     }
     renderReviews() {

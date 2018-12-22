@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class ReviewForm extends Component {
-    
+
     constructor(props) {
         super(props)
         this.state = {
@@ -11,6 +11,7 @@ class ReviewForm extends Component {
             body: ''
         }
     }
+
     toggleForm() {
         let { isOpen } = this.state;
         this.setState({ isOpen: !isOpen })
