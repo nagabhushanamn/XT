@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classNames from 'classnames'
 import Review from './Review';
-import ReviewForm from './ReviewForm';
+import ReviewForm from './ReviewForm_v2';
 
 class Product extends Component {
     constructor(props) {
