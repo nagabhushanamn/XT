@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classNames from 'classnames'
 import Review from './Review';
+import ReviewForm from './ReviewForm';
 
 class Product extends Component {
     constructor(props) {
@@ -30,6 +31,11 @@ class Product extends Component {
             return <Review key={idx} item={item} />
         });
     }
+    addNewReview(review) {
+        let { reviews } = this.state;
+        reviews = reviews.concat(review)
+        this.setState({ reviews })
+    }
     renderTabPanel(item) {
         let { currentTab } = this.state;
         let panel;
@@ -43,7 +49,11 @@ class Product extends Component {
                 break;
             }
             case 3: {
-                panel = (<div>{this.renderReviews()}</div>)
+                panel = (
+                    <div>
+                        {this.renderReviews()}
+                        <ReviewForm onNewReview={review => this.addNewReview(review)} />
+                    </div>)
                 break;
             }
             default: panel = null;
