@@ -9,12 +9,13 @@ class ActionButton extends Component {
     increment() {
         // this.state.count++; // dont do like
         let { count } = this.state;
+        let { value } = this.props;
         count += 1
         this.setState({ count }, () => {
             setTimeout(() => {
                 let { onAction } = this.props;
                 if (onAction) {
-                    onAction();
+                    onAction({ value: count * value });
                 }
             }, 100);
         })
@@ -23,11 +24,12 @@ class ActionButton extends Component {
         console.log("ActionButton :: render")
         let { value } = this.props; // de-structuring
         let { count } = this.state;
+        let className = `btn ${value < 0 ? 'btn-info' : 'btn-warning'}`
         return (
             <div className="action-button">
                 <div className="card card-default">
                     <div className="card-body">
-                        <button onClick={e => this.increment()} className="btn btn-primary">{value}</button>
+                        <button onClick={e => this.increment()} className={className}>{value}</button>
                         &nbsp;&mdash;&nbsp;
                         <span className="badge badge-danger">{count}</span>
                     </div>

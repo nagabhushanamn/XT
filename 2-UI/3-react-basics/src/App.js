@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import Greeting from './components/Greeting';
 import CounterBox from './components/CounterBox';
+import Layout from './components/Layout';
+import Product from './components/Product';
+import Employee from './components/Employee';
+import A from './components/A'
 
 class App extends Component {
   constructor(props) {
@@ -25,6 +29,18 @@ class App extends Component {
           <span className="badge badge-info">{this.props.title}</span> &mdash;
           by &nbsp;
           <span className="badge badge-danger">{this.props.trainer}</span> </h1>
+        <hr />
+        <A value={1000} />
+        <A value={2000} />
+        <hr />
+        <Layout>
+          <Product />
+          <Product />
+        </Layout>
+        <Layout>
+          <Employee />
+          <Employee />
+        </Layout>
         <hr />
         <CounterBox />
         <hr />

@@ -12,7 +12,13 @@ react-components
 
       => mutable data , 
 
-  - life-cycle methods       
+  - life-cycle methods      
+
+  - children
+
+  - context
+  
+   
 
 
 

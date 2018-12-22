@@ -10,10 +10,14 @@ class CounterBox extends Component {
             totalCount: 0
         }
     }
-    incrementTotalCount() {
+    incrementTotalCount(e) {
         let { totalCount } = this.state;
-        totalCount += 1
+        totalCount += e.value
         this.setState({ totalCount })
+    }
+    rennderActionButtons() {
+        let numbers = [1, 2, 3, 4, 5, -1, -2, -3, -4]
+        return numbers.map((n, idx) => <ActionButton key={idx} onAction={e => this.incrementTotalCount(e)} value={n} />)
     }
     render() {
         console.log("CounterBox :: render");
@@ -22,8 +26,15 @@ class CounterBox extends Component {
             <div className="card card-default">
                 <div className="card-header">counter box : <span className="badge badge-warning">{totalCount}</span></div>
                 <div className="card-body">
-                    <ActionButton onAction={e => this.incrementTotalCount()} value={1} />
-                    <ActionButton onAction={e => this.incrementTotalCount()} value={10} />
+                    {
+                        /*
+                        <ActionButton onAction={e => this.incrementTotalCount(e)} value={1} />
+                        <ActionButton onAction={e => this.incrementTotalCount(e)} value={-10} /> 
+                        */
+                    }
+                    {
+                        this.rennderActionButtons()
+                    }
                     <div style={{ clear: 'both' }}>
                         <hr />
                         <TotalCountDisplay value={totalCount} />
