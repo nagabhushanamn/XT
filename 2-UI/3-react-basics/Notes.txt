@@ -4,8 +4,15 @@
 react-components
 -----------------
 
-
   - properties  
 
+      => immutable data given while instantiaiting & re-rendering
 
-        => immutable data given while instantiaiting & re-rendering
+  - state
+
+      => mutable data , 
+
+  - life-cycle methods       
+
+
+

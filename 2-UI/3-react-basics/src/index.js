@@ -5,3 +5,4 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 ReactDOM.render(<App title="react-basics" trainer={"Nag"} />, document.getElementById('root'));
 
+ 
