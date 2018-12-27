@@ -11,6 +11,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      isCartOpen: false,
       cart: [],
       products: [
         {
@@ -33,6 +34,11 @@ class App extends Component {
     }
   }
 
+  toggleCartView() {
+    let { isCartOpen } = this.state;
+    this.setState({ isCartOpen: !isCartOpen })
+  }
+
   addToCart(item, qty) {
     let { cart } = this.state;
     cart.push(item);
@@ -40,17 +46,24 @@ class App extends Component {
   }
 
   renderProducts() {
-    let { products } = this.state;
-    return products.map((item, idx) => {
-      return (
-        <div key={idx} className="list-group-item">
-          <Product item={item} onBuy={(item, qty) => this.addToCart(item, qty)} />
-        </div>
-      )
-    })
+    let { products, isCartOpen } = this.state;
+    if (!isCartOpen)
+      return products.map((item, idx) => {
+        return (
+          <div key={idx} className="list-group-item">
+            <Product item={item} onBuy={(item, qty) => this.addToCart(item, qty)} />
+          </div>
+        )
+      })
+    else return null;
+  }
+  renderCart() {
+    let { isCartOpen, cart } = this.state;
+    if (isCartOpen) return <CartView cart={cart} />
+    return null;
   }
   render() {
-    let { cart } = this.state;
+    let { cart, isCartOpen } = this.state;
     return (
       <div className="container">
         <Navbar title="online-shop" />
@@ -58,7 +71,13 @@ class App extends Component {
         <i className="fa fa-shopping-cart"></i> &nbsp;
         <span className="badge badge-danger">{cart.length} </span> item(s) in cart
         <hr />
-        <CartView cart={cart} />
+        <ul className="nav nav-pills">
+          <li className="nav-item">
+            <a onClick={e => this.toggleCartView()} className="nav-link" href="/#">View {isCartOpen ? 'products' : 'cart'}</a>
+          </li>
+        </ul>
+        <hr />
+        {this.renderCart()}
         <hr />
         {this.renderProducts()}
       </div>

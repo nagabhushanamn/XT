@@ -14,7 +14,7 @@ function renderCartItems(cart) {
     })
 }
 
-export default ({ cart }) => {
+const CartView = ({ cart }) => {
     return (
         <div className="card card-default">
             <div className="card-header">Item(s) in cart</div>
@@ -28,3 +28,5 @@ export default ({ cart }) => {
         </div>
     )
 }
+
+export default CartView;
