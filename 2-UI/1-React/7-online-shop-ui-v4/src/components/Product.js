@@ -30,7 +30,7 @@ class Product extends Component {
         if (onBuy) {
             onBuy(item, qty)
         }
-    }
+    } 
     renderBuyBtn(product) {
         if (product.canBuy)
             return (

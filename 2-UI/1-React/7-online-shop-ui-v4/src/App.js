@@ -50,11 +50,11 @@ class App extends Component {
               <li className="nav-item">
                 <Link className="nav-link" to="/#">View orders</Link>
               </li>
-            </ul>
+            </ul> 
             <hr />
             <Switch>
               <Route path={"/"} exact={true} component={Home} />
-              <Route path={"/products/:type"} component={ProductList} />
+              <Route path={"/products/:type"} render={(props) => <ProductList {...props} onBuy={(item, qty) => this.addToCart(item, qty)} />} />
               <Route path={"/cart"} render={() => this.renderCart()} />
               <Route component={NotFound} />
             </Switch>

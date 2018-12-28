@@ -16,7 +16,7 @@ class ProductList extends Component {
                 this.setState({ products })
             })
     }
-
+ 
     componentDidUpdate() {
         let { match } = this.props;
         console.log("loading " + match.params.type + " products");
@@ -27,7 +27,7 @@ class ProductList extends Component {
         return products.map((item, idx) => {
             return (
                 <div key={idx} className="list-group-item">
-                    <Product item={item} onBuy={(item, qty) => this.addToCart(item, qty)} />
+                    <Product item={item} onBuy={(item, qty) => this.props.onBuy(item, qty)} />
                 </div>
             )
         })
