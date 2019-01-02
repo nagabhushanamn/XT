@@ -1,0 +1,80 @@
+
+
+
+UI  ==>  online-shopping
+
+
+//---------------------------------------------
+step-1 : indentify state/model that represents UI
+//---------------------------------------------
+
+ - products
+ - reviews
+ - cart
+ - order
+ - user
+ ......
+
+
+//---------------------------------------------
+step-2 : indentify action(s) which cause state change
+//---------------------------------------------
+
+ - LOAD_PRODUCTS
+ - LOAD_REVIEWS
+ - ADD_NEW_REVIEW
+ - BUY
+ - CHECKOUT
+ ...
+
+//---------------------------------------------
+step-3 : create action(s) by action creator(s)
+//---------------------------------------------
+
+syntax :
+
+       {type:TYPE,[payload]}
+
+
+
+//---------------------------------------------
+step-4 : process action(s) by reducer(s)
+//---------------------------------------------
+
+
+//---------------------------------------------
+step-5 : combine/compose all reducer(s) as root-reducer
+//---------------------------------------------
+
+
+//---------------------------------------------
+step-6 : create store with root-reducer
+//---------------------------------------------
+
+
+
+
+
+{
+    type:'LOAD_PRODUCTS',
+    products:[
+        {},{},{}
+    ]
+}
+
+
+
+
+{
+    type:'LOAD_REVIEWS',
+    productId:111,
+    reviews:[
+        {},{},{}
+    ]
+}
+
+{
+    type:'BUY',
+    item:{},
+    qty:1
+}
