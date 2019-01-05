@@ -34,7 +34,7 @@ class App extends Component {
         <Navbar title="online-shop" />
         <hr />
         <i className="fa fa-shopping-cart"></i> &nbsp;
-        <span className="badge badge-danger">{cart.length} </span> item(s) in cart
+        <span className="badge badge-danger">{Object.keys(cart).length} </span> item(s) in cart
         <hr />
         <Router>
           <div>

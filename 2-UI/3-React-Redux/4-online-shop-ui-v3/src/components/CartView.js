@@ -12,13 +12,16 @@ function increment(item, actions) {
 }
 
 function renderCartItems(cart, actions) {
-    return cart.map((item, idx) => {
+    let keys = Object.keys(cart);
+    return keys.map((key, idx) => {
+        let itemLine = cart[key];
+        let { item, qty } = itemLine
         return (
             <tr key={idx}>
                 <td>{item.name}</td>
                 <td>&#8377;{item.price}</td>
-                <td>{"qty"}</td>
-                <td>{"total"}</td>
+                <td>{qty}</td>
+                <td>&#8377;{qty * item.price}</td>
                 <td><i onClick={e => increment(item, actions)} className="fa fa-plus"></i></td>
             </tr>
         )

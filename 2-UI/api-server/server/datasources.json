@@ -6,7 +6,7 @@
   "mongo": {
     "host": "",
     "port": 0,
-    "url": "mongodb://user:user123@ds113402.mlab.com:13402/products-catalog",
+    "url": "mongodb://localhost/products-catalog",
     "database": "products-catalog",
     "password": "",
     "name": "mongo",

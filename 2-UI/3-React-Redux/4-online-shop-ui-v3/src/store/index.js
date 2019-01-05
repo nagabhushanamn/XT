@@ -10,7 +10,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 const intialState = {
     products: [],
     reviews: {},
-    cart: []
+    cart: {}
 }
 
 const store = createStore(rootReducer, intialState, composeWithDevTools(
