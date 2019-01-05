@@ -14,6 +14,7 @@ export function loadProducts(type, size) {
         Api.loadProducts(type, size)
             .then(response => response.data)
             .then(products => {
+                // log
                 dispatch({ type: 'REQUEST_FINISH', message: '' })
                 dispatch({ type: LOAD_PRODUCTS, products }) // async action
             })

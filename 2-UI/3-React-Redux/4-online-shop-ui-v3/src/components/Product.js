@@ -32,21 +32,20 @@ class Product extends Component {
     handleBuy() {
         let { item, actions } = this.props;
         let qty = this.refs.qty.value
-        actions.buy(item, qty)
+        qty = qty || 1
+        actions.buy(item, Number.parseInt(qty, 10))
     }
-    handleQtyChange() {
-        let { item, actions } = this.props;
-        let qty = this.refs.qty.value
-        actions.buy(item, qty)
+    componentDidUpdate() {
+        let { cartLine } = this.props
+        this.refs.qty.value = cartLine.qty || "";
     }
     renderBuyBtn(product) {
-        let { cartLine } = this.props;
         if (product.canBuy)
             return (
                 <div>
                     <button onClick={e => this.handleBuy()} className="btn btn-sm btn-primary">buy</button>
                     &nbsp;
-                    <input min="2" max="3" type="number" ref="qty" value={cartLine.qty} onChange={e => this.handleQtyChange()} />
+                        <input style={{width:'50px'}} type="text" ref="qty" />
                 </div>
             )
         else return null;

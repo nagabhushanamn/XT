@@ -12,6 +12,9 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import ProductList from './components/ProductList';
 
 import { connect } from 'react-redux'
+import { loadCart } from './actions/cart'
+
+import { bindActionCreators } from 'redux'
 
 class App extends Component {
 
@@ -22,6 +25,11 @@ class App extends Component {
         <div className="bg bg-info">{this.props.reqStatus.message}</div>
       )
     else return null;
+  }
+
+  componentDidMount() {
+    let { actions } = this.props;
+    actions.loadCart('Nag')
   }
 
   renderCart() {
@@ -71,6 +79,12 @@ const mapStateToProps = (state, ownProps) => ({
   reqStatus: state.reqStatus
 })
 
+const mapDispatchToProps = dispatch => ({
+  // ... normally is an object full of action creators
+  actions: bindActionCreators({ loadCart }, dispatch)
+})
+
+
 
 // export default App;
-export default connect(mapStateToProps, null)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
