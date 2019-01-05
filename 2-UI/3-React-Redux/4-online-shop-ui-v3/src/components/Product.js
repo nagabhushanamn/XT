@@ -34,13 +34,19 @@ class Product extends Component {
         let qty = this.refs.qty.value
         actions.buy(item, qty)
     }
+    handleQtyChange() {
+        let { item, actions } = this.props;
+        let qty = this.refs.qty.value
+        actions.buy(item, qty)
+    }
     renderBuyBtn(product) {
+        let { cartLine } = this.props;
         if (product.canBuy)
             return (
                 <div>
                     <button onClick={e => this.handleBuy()} className="btn btn-sm btn-primary">buy</button>
                     &nbsp;
-                    <input min="2" max="3" type="number" ref="qty" />
+                    <input min="2" max="3" type="number" ref="qty" value={cartLine.qty} onChange={e => this.handleQtyChange()} />
                 </div>
             )
         else return null;
@@ -117,7 +123,8 @@ class Product extends Component {
 const mapStateToProps = (state, ownProps) => ({
     // ... computed data from state and optionally ownProps
     reviews: state.reviews[ownProps.item.id] || [],
-    reqStatus: state.reqStatus
+    reqStatus: state.reqStatus,
+    cartLine: state.cart[ownProps.item.id] || {}
 })
 
 const mapDispatchToProps = dispatch => ({
