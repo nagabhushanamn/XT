@@ -18,6 +18,11 @@ export function cartReducer(state = {}, action) {
             let { cart } = action;
             return cart;
         }
+        case 'NEW_ORDER':
+        case 'CLEAR_CART':
+            {
+                return {};
+            }
         case BUY: {
             let { item, qty } = action;
             let { id } = item;

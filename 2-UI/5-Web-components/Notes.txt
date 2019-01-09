@@ -1,0 +1,44 @@
+
+
+    What are web components?
+    --------------------------
+
+    - Web components are a W3C specification 
+      to build a standalone component for web applications
+
+
+
+    Benefits and challenges of web components
+    -----------------------------------------
+
+    - reusable.
+    - maintainable.
+    - platform independent.
+    - Shadow DOM provides encapsulation mechanism to style, script, and HTML markup.
+        - provides 'private scope' and 
+          prevents the content of the component being affected by the external document.
+
+    
+    Equally, some of the challenges for a web component include:
+   ------------------------------------------------------------ 
+
+   - Implementation
+   - Shared resource
+   - Performance
+   - Polyfill size
+   - SEO
+
+
+
+   The web component architecture
+   ------------------------------
+
+    Web component development is made possible by folowing APIs
+
+        1. Template
+        2. Shadow DOM
+        3. and Custom-Elements
+        4. HTML import ( deprecated )
+
+
+

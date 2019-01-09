@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { buy } from '../actions/cart'
+import { createNewOrder } from '../actions/orders'
 
 function increment(item, actions) {
     actions.buy(item, 1)
@@ -28,20 +29,30 @@ function renderCartItems(cart, actions) {
     })
 }
 
+function handleCheckout(userId, cart, actions, history) {
+    actions.createNewOrder('Nag', cart)
+    history.push('/orders')
+}
+
 const CartView = (props) => {
-    let { cart, actions } = props;
-    return (
-        <div className="card card-default">
-            <div className="card-header">Item(s) in cart</div>
-            <div className="card-body">
-                <table className="table table-bordered table-sm">
-                    <tbody>
-                        {renderCartItems(cart, actions)}
-                    </tbody>
-                </table>
+    let { cart, actions, history } = props;
+    if (Object.keys(cart).length === 0)
+        return <span> No Items in cart</span>
+    else
+        return (
+            <div className="card card-default">
+                <div className="card-header">Item(s) in cart</div>
+                <div className="card-body">
+                    <table className="table table-bordered table-sm">
+                        <tbody>
+                            {renderCartItems(cart, actions)}
+                        </tbody>
+                    </table>
+                    <hr />
+                    <button className="btn btn-danger" onClick={e => handleCheckout('Nag', cart, actions, history)}>checkout</button>
+                </div>
             </div>
-        </div>
-    )
+        )
 }
 
 
@@ -52,7 +63,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
     // ... normally is an object full of action creators
-    actions: bindActionCreators({ buy }, dispatch)
+    actions: bindActionCreators({ buy, createNewOrder }, dispatch)
 })
 
 // `connect` returns a new function that accepts the component to wrap:

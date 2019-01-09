@@ -1,0 +1,44 @@
+
+Responsive web design
+----------------------
+
+Responsive web design is the practice of building 
+a website suitable to work on every device and every screen size, 
+no matter how large or small, mobile or desktop. 
+
+
+4 guide-lines
+--------------
+
+- Flexible Layouts   ( using Flex , Grid modules ) 
+- Media Queries  ( css3 features )
+- Mobile First approach
+- Flexible Media-content ( images , video )
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------
+
+Limitations with CSS
+
+
+    - no variables
+    - no nestting styles
+    - mixins
+
+    solns:
+
+        => css pre-processors    i.e LESS , SASS
+
+
+
+----------------------------------------------
+

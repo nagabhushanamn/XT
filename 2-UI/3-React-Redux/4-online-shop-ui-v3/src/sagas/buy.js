@@ -5,7 +5,7 @@ import { delay } from 'redux-saga'
 
 function* buyAsync(action) {
     let { item, qty } = action;
-    //yield delay(3000)   // async-1
+    // yield delay(3000)   // async-1
     // yield delay(3000)   // async-2
     yield put({ type: 'BUY', item, qty })
 }

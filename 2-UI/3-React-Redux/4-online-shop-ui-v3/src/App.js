@@ -15,6 +15,7 @@ import { connect } from 'react-redux'
 import { loadCart } from './actions/cart'
 
 import { bindActionCreators } from 'redux'
+import OrderView from './components/OrderView';
 
 class App extends Component {
 
@@ -30,10 +31,6 @@ class App extends Component {
   componentDidMount() {
     let { actions } = this.props;
     actions.loadCart('Nag')
-  }
-
-  renderCart() {
-    return <CartView />
   }
   render() {
     let { cart } = this.props;
@@ -54,7 +51,7 @@ class App extends Component {
                 <Link className="nav-link" to="/cart">View-cart</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/#">View orders</Link>
+                <Link className="nav-link" to="/orders">View orders</Link>
               </li>
             </ul>
             <hr />
@@ -63,7 +60,8 @@ class App extends Component {
             <Switch>
               <Route path={"/"} exact={true} component={Home} />
               <Route path={"/products/:type"} render={(props) => <ProductList {...props} />} />
-              <Route path={"/cart"} render={() => this.renderCart()} />
+              <Route path={"/cart"} component={CartView} />
+              <Route path={"/orders"} component={OrderView} />
               <Route component={NotFound} />
             </Switch>
           </div>

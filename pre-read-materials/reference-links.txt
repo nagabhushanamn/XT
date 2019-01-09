@@ -38,3 +38,11 @@ https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5
 
 
 
+
+
+
+
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+https://css-tricks.com/snippets/css/complete-guide-grid/
+
+

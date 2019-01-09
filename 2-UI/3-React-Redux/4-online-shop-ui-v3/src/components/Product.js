@@ -45,16 +45,19 @@ class Product extends Component {
                 <div>
                     <button onClick={e => this.handleBuy()} className="btn btn-sm btn-primary">buy</button>
                     &nbsp;
-                        <input style={{width:'50px'}} type="text" ref="qty" />
+                        <input style={{ width: '50px' }} type="text" ref="qty" />
                 </div>
             )
         else return null;
     }
     renderReviews() {
         let { reviews } = this.props;
-        return reviews.map((item, idx) => {
-            return <Review key={idx} item={item} />
-        });
+        if (reviews.length === 0)
+            return <span>No Reviews</span>
+        else
+            return reviews.map((item, idx) => {
+                return <Review key={idx} item={item} />
+            });
     }
     addNewReview(review) {
         let { item, actions } = this.props;
@@ -76,6 +79,7 @@ class Product extends Component {
                 panel = (
                     <div>
                         {this.renderReviews()}
+                        <hr />
                         <ReviewForm onNewReview={review => this.addNewReview(review)} />
                     </div>)
                 break;

@@ -13,7 +13,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 const intialState = {
     products: [],
     reviews: {},
-    cart: {}
+    cart: {},
+    orders: []
 }
 
 const sagaMiddleware = createSagaMiddleware()
