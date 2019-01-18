@@ -1,0 +1,68 @@
+
+
+
+design issues with react-lib only
+-----------------------------------
+
+
+
+   -> state, state-change & n/w-ing logic is tightly toupled with rendering logic ( with View components)
+
+
+
+        problems:
+
+            -> can't re-use state for many components in easy way
+            -> can't re-use same View-component with different state
+            -> Unit-Testing is very difficult with redering logic
+
+
+
+legacy solution:
+
+        => MVC arch patterns
+
+
+          M ==> Model/State
+          V ==> View
+          C ==> Controller
+
+
+
+          data-flow  ==> 2-way / bi-directional 
+
+            limitation:
+
+                    => very difficult predict ui data-flow
+
+                        i.e difficult track/maintain stable UI state
+
+
+modern solution : 
+
+        => flux ( Uni-directional ) pattern
+
+
+        => flux + reducers ==> redux
+
+
+
+
+
+
+summary
+
+   React  ==> View
+   Redux  ==> State/Model
+
+
+   React + Redux ==> Uni-directional data-flow
+
+
+
+
+
+
+   With FP, we can do higher-order-programming
+
+   
