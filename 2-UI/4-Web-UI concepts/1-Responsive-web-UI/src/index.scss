@@ -1,6 +1,6 @@
 
 
-@import './bootstrap/bootstrap.scss';
+// @import './bootstrap/bootstrap.scss';
 
 @import 'variables';
 @import 'mixins';
@@ -79,7 +79,7 @@ body{
                     }
                     strong{
                         display: inline-block;
-                        margin-left: max($numbers: 40px);
+                        margin-left: max(40px);
                         margin-top: 10px;
                     }
                 }

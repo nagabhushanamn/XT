@@ -63,6 +63,7 @@ class XCounter extends HTMLElement {
     attributeChangedCallback(attrName, oldValue, newValue) {
         if (attrName === 'value') {
             this._value = Number.parseInt(newValue, 10)
+            this.valueElement.innerText = this._value;
         }
     }
 }
