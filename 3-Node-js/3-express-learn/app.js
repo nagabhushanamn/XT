@@ -2,7 +2,8 @@
 
 const express = require('express');
 // const logger = require('./middlewares/logger');
-const logger=require('morgan')
+const logger = require('morgan')
+const bodyParser = require('body-parser')
 const app = express();
 
 
@@ -130,8 +131,20 @@ app.use('/products', (req, res, next) => {
 
 app.use(logger('tiny'));
 app.use(express.static(__dirname + '/public'));
-app.use('/todos', (req, res, next) => {
+app.get('/todos', (req, res, next) => {
     res.send(['eat', 'sleep', 'work'])
+})
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/todos', { useNewUrlParser: true });
+
+const Todo = mongoose.model('Todo', { title: String });
+
+app.post('/todos', bodyParser.json(), (req, res, next) => {
+    let newTodo = new Todo({ title: req.body.title });
+    newTodo.save((err, data) => {
+        res.send(data)
+    });
 })
 
 
