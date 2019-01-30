@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List components - tests render list 1`] = `
+<div>
+  <ul
+    className="list-group"
+  >
+    <li
+      className="list-group-item"
+    >
+      one
+    </li>
+    <li
+      className="list-group-item"
+    >
+      two
+    </li>
+    <li
+      className="list-group-item"
+    >
+      three
+    </li>
+  </ul>
+</div>
+`;

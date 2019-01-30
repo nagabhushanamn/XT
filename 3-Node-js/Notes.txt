@@ -1,0 +1,28 @@
+
+-----------------------------------------------
+
+1- blockig vs non-blocking IO
+2- Event Model
+3- Node.js as server-side runtime
+
+-----------------------------------------------    
+
+
+
+real web-application
+
+
+    should process request in many ways
+
+
+     ==> based on URL
+     ==> based on http-method
+     ==> based on http-headers
+     ==> based on req parameters/body
+
+     ....
+
+
+------------------------------------------------
+
+

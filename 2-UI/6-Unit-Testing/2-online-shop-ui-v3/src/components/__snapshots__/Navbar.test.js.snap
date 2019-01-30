@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders movies 1`] = `
+<div>
+  <nav
+    className="navbar navbar-light bg-primary"
+  >
+    <a
+      className="navbar-brand"
+      href="/"
+    >
+      shop-IT
+    </a>
+  </nav>
+</div>
+`;

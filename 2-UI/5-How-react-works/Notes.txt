@@ -5,16 +5,17 @@
 
 
 
-Reconciliation : https://reactjs.org/docs/reconciliation.html
---------------
+Reconciliation  
+-----------------
+
+https://reactjs.org/docs/reconciliation.html
+
 
 React implements a heuristic O(n) algorithm based on two assumptions:
 
 
     Two elements of different types will produce different trees.
     The developer can hint at which child elements may be stable across different renders with a key prop.
-
-
 
 
 https://medium.com/@rajaraodv/the-inner-workings-of-virtual-dom-666ee7ad47cf
