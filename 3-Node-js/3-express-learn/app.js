@@ -3,8 +3,10 @@
 const express = require('express');
 // const logger = require('./middlewares/logger');
 const logger = require('morgan')
-const bodyParser = require('body-parser')
+var bodyParser = require('body-parser')
 const app = express();
+
+var products = require('./routes/products');
 
 
 //------------------------------------------------------------
@@ -131,22 +133,68 @@ app.use('/products', (req, res, next) => {
 
 app.use(logger('tiny'));
 app.use(express.static(__dirname + '/public'));
+
+
+/*
+
 app.get('/todos', (req, res, next) => {
-    res.send(['eat', 'sleep', 'work'])
+    let todos = [
+        'eat', 'sleep', 'work'
+    ]
+    let size = req.query.size;
+    let type = req.query.type;
+    if (!size)
+        res.send(todos)
+    else
+        res.send(todos.slice(0, size))
 })
 
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/todos', { useNewUrlParser: true });
-
-const Todo = mongoose.model('Todo', { title: String });
-
-app.post('/todos', bodyParser.json(), (req, res, next) => {
-    let newTodo = new Todo({ title: req.body.title });
-    newTodo.save((err, data) => {
-        res.send(data)
-    });
+app.param('id', (req, res, next) => {
+    let id = req.params.id;
+    //....
+    req.id = id;
+    next();
 })
 
+app.get('/todos/:id', (req, res, next) => {
+    let id = req.id;
+    if (id > 100)
+        res.status(404).json("No todos, > " + id)
+    else
+        res.send("todo-" + id)
+})
+
+
+
+
+app.get('/products/:id', (req, res, next) => {
+    let id = req.id;
+    if (id > 100)
+        res.status(404).json("No products, > " + id)
+    else
+        res.send("products-" + id)
+})
+
+// app.use(bodyParser.urlencoded({ extended: false }));
+/*
+app.post('/products', bodyParser.urlencoded({ extended: false }), (req, res, next) => {
+    //
+    let product = req.body;
+    console.log(product)
+    res.send('New Product saved...')
+})
+
+app.post('/products', bodyParser.json(), (req, res, next) => {
+    //
+    let product = req.body;
+    console.log(product)
+    res.send('New Product saved...')
+})
+
+*/
+
+
+app.use('/api/products', products)
 
 
 app.listen(3000, () => {

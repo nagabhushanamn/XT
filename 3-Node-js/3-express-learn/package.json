@@ -12,7 +12,6 @@
     "body-parser": "^1.18.3",
     "bootstrap": "^4.2.1",
     "express": "^4.16.4",
-    "mongoose": "^5.4.7",
     "morgan": "^1.9.1"
   }
 }

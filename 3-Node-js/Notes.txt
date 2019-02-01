@@ -26,3 +26,37 @@ real web-application
 ------------------------------------------------
 
 
+
+
+s/w 
+-----
+
+
+    1- application  ==> procesing logic
+
+        design-model:
+
+            -> object-model
+
+    2- database     ==> persisting logic
+
+            design-model:
+
+            A.SQL   ==> Relational Model
+
+                e.g MySQL,Oracle,SQLServer
+
+            B.NoSQL ==> Document Model 
+
+                e.g MongoDB
+
+
+
+    ORM  ==> Object Relational Mapping
+    ODM  ==> Object Document Mapping            
+
+
+    ---------------------------------------------------------
+
+
+    

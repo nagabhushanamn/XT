@@ -1,0 +1,18 @@
+<div class="card card-default">
+    <div class="card-header">All Products</div>
+    <div class="card-body">
+        <table class="table table-sm table-bordered">
+            <tbody>
+                {{#each products}}
+                <tr></tr>
+                <td>{{name}}</td>
+                <td>&#8377;{{price}}</td>
+                <td>{{description}}</td>
+                <td><a>Edit</a></td>
+                <td><a>Delete</a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
