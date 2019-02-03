@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);  // html
-app.use('/api/products', productsApiRouter);  // html
+app.use('/api/products', productsApiRouter);  // json
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
