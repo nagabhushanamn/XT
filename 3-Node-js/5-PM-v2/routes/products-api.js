@@ -46,7 +46,7 @@ router
   })
 
   .post('/:id/reviews', (req, res, next) => {
-    let productId = req.params.id;
+    let id = req.params.id;
     let review = new Review(req.body)
     Product.findOne({ _id: id }, (err, product) => {
       if (err) throw err;
@@ -61,7 +61,7 @@ router
   .get("/:id/reviews", (req, res, next) => {
     let id = req.params.id;
     Review.find({ product: id })
-      .populate('product')
+     // .populate('product')
       .exec(function (error, reviews) {
         if (error) throw error;
         res.send(reviews)
