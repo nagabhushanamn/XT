@@ -1,0 +1,6 @@
+{
+  "name": "memdb",
+  "connector": "memory",
+  "localStorage": "",
+  "file": ""
+}
