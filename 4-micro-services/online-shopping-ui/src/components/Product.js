@@ -40,7 +40,7 @@ class Product extends Component {
         this.refs.qty.value = cartLine.qty || "";
     }
     renderBuyBtn(product) {
-        if (product.canBuy)
+        if (product)
             return (
                 <div>
                     <button onClick={e => this.handleBuy()} className="btn btn-sm btn-primary">buy</button>
@@ -95,7 +95,7 @@ class Product extends Component {
             <div>
                 <div className="row">
                     <div className="col-3 col-sm-3 col-md-3">
-                        <img src={item.image} className="img-fluid" alt={item.name} />
+                        <img src={item.image?item.image:'/images/no-pic.png'} className="img-fluid" alt={item.name} />
                     </div>
                     <div className="col-9 col-sm-9 col-md-9">
                         <h5>{item.name}</h5>

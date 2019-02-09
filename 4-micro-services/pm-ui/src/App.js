@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import { Link, BrowserRouter as Router, Route } from 'react-router-dom';
 import ProductList from './components/ProductList'
+import ProductForm from './components/ProductForm';
 
 class App extends Component {
   render() {
@@ -18,10 +19,13 @@ class App extends Component {
               <li className="nav-item">
                 <Link className="nav-link" to="/ui/products">View All</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/ui/product-form">Add New</Link>
+              </li>
             </ul>
-
             <hr />
             <Route path={"/ui/products"} component={ProductList} />
+            <Route path={"/ui/product-form"} render={(props) => <ProductForm {...props} />} />
           </div>
         </Router>
 

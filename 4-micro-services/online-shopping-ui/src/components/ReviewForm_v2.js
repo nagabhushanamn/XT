@@ -5,7 +5,7 @@ class ReviewForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            isOpen: true,
+            isOpen: false,
             stars: 5,
             author: 'nag@gmail.com',
             body: ''

@@ -2,26 +2,44 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { loadProducts } from '../actions/products'
+import { loadProducts, deleteProduct } from '../actions/products'
+// import { Button } from 'primereact/button';
 
 import 'primereact/resources/themes/nova-light/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 
-import { DataTable, Column } from 'primereact/datatable';
+// import { DataTable, Column } from 'primereact/datatable';
 
 class ProductList extends Component {
   componentDidMount() {
     let { actions } = this.props;
     actions.loadProducts(20);
   }
+  renderProducts() {
+    let { products } = this.props;
+    return products.map((product, idx) => {
+      return (
+        <tr key={product._id}>
+          <td>{product.name}</td>
+          <td>&#8377;{product.price}</td>
+          <td>
+            <button className="btn btn-info">Edit</button>
+            &nbsp;
+            <button onClick={e => this.props.actions.deleteProduct(product._id)} className="btn btn-info">Delete</button>
+          </td>
+        </tr>
+      )
+    });
+  }
   render() {
     return (
       <div>
-        <DataTable value={this.props.products}>
-          <Column field="name" header="Name" />
-          <Column field="price" header="Price" />
-        </DataTable>
+        <table className="table table-sm table-bordered">
+          <tbody>
+            {this.renderProducts()}
+          </tbody>
+        </table>
       </div>
     )
   }
@@ -33,7 +51,7 @@ function mapStateToProps(state, props) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ loadProducts }, dispatch)
+    actions: bindActionCreators({ loadProducts, deleteProduct }, dispatch)
   }
 }
 
