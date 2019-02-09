@@ -4,21 +4,28 @@ import axios from 'axios'
 const apiURl = "http://localhost:3000/api/products";
 
 const Api = {
+    // addToCart(item, qty) {
+    //     let cart = localStorage.getItem('user-cart') || "{}"
+    //     cart = JSON.parse(cart);
+    //     if (cart) {
+    //         let { id } = item;
+    //         if (cart[id]) {
+    //             let itemLine = cart[id];
+    //             const newCart = Object.assign({}, cart, { [id]: { item, qty: itemLine.qty + qty } })
+    //             localStorage.setItem('user-cart', JSON.stringify(newCart))
+    //         } else {
+    //             let { id } = item;
+    //             const newCart = Object.assign({}, cart, { [id]: { item, qty } })
+    //             localStorage.setItem('user-cart', JSON.stringify(newCart))
+    //         }
+    //     }
+    // },
     addToCart(item, qty) {
-        let cart = localStorage.getItem('user-cart') || "{}"
-        cart = JSON.parse(cart);
-        if (cart) {
-            let { id } = item;
-            if (cart[id]) {
-                let itemLine = cart[id];
-                const newCart = Object.assign({}, cart, { [id]: { item, qty: itemLine.qty + qty } })
-                localStorage.setItem('user-cart', JSON.stringify(newCart))
-            } else {
-                let { id } = item;
-                const newCart = Object.assign({}, cart, { [id]: { item, qty } })
-                localStorage.setItem('user-cart', JSON.stringify(newCart))
-            }
-        }
+        return axios
+            .post('http://localhost:4000/api/cart/nag', {
+                item,
+                qty
+            })
     },
     loadCart(user) {
         let cart = localStorage.getItem('user-cart')

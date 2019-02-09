@@ -125,9 +125,9 @@ class Product extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
     // ... computed data from state and optionally ownProps
-    reviews: state.reviews[ownProps.item.id] || [],
+    reviews: state.reviews[ownProps.item._id] || [],
     reqStatus: state.reqStatus,
-    cartLine: state.cart[ownProps.item.id] || {}
+    cartLine: state.cart[ownProps.item._id] || {}
 })
 
 const mapDispatchToProps = dispatch => ({

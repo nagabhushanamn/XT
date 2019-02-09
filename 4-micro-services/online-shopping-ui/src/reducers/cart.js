@@ -25,7 +25,7 @@ export function cartReducer(state = {}, action) {
             }
         case BUY: {
             let { item, qty } = action;
-            let { id } = item;
+            let { _id:id } = item;
             if (state[id]) {
                 let itemLine = state[id];
                 return Object.assign({}, state, { [id]: { item, qty: itemLine.qty + qty } })

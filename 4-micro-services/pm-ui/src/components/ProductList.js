@@ -24,7 +24,7 @@ class ProductList extends Component {
           <td>{product.name}</td>
           <td>&#8377;{product.price}</td>
           <td>
-            <button className="btn btn-info">Edit</button>
+            <button className="btn btn-info">Edit ( Not implemented )</button>
             &nbsp;
             <button onClick={e => this.props.actions.deleteProduct(product._id)} className="btn btn-info">Delete</button>
           </td>
