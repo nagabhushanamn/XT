@@ -1,0 +1,61 @@
+<button *ngIf="!isOpen" (click)="toggle()" class="btn btn-info">+</button>
+
+<div class="row" *ngIf="isOpen">
+  <div class="col-6 col-sm-6 col-md-6">
+    <div class="card">
+      <div class="card-header">Review Form </div>
+      <div class="card-body">
+
+        <form [formGroup]="reviewForm">
+          <div class="form-group">
+            <label>stars</label>
+            <select class="form-control" formControlName="stars">
+              <option *ngFor="let n of [1,2,3,4,5]" [value]="n">{{n}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>author</label>
+            <input class="form-control" formControlName="author" />
+            <div class="text-danger">
+              {{errors.email}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label>body</label>
+            <textarea class="form-control" formControlName="body"></textarea>
+          </div>
+          <button class="btn btn-dark">save</button>&nbsp;
+          <button (click)="toggle()" class="btn btn-danger">save</button>
+        </form>
+
+        <hr />
+        <pre>
+          {{reviewForm.value|json}}
+        </pre>
+        <hr />
+        <pre>
+          is pristine : {{reviewForm.get('author').pristine}}
+          is dirty    : {{reviewForm.get('author').dirty}}
+
+          is vaild    : {{reviewForm.get('author').valid}}
+          is invalid  : {{reviewForm.get('author').invalid}}
+
+          is touched  : {{reviewForm.get('author').touched}}
+          is untouched: {{reviewForm.get('author').untouched}}
+        </pre>
+        <hr />
+        <pre>
+          is pristine : {{reviewForm.pristine}}
+          is dirty    : {{reviewForm.dirty}}
+
+          is vaild    : {{reviewForm.valid}}
+          is invalid  : {{reviewForm.invalid}}
+
+          is touched  : {{reviewForm.touched}}
+          is untouched: {{reviewForm.untouched}}
+        </pre>
+
+      </div>
+    </div>
+  </div>
+</div>

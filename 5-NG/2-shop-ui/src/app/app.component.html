@@ -1,0 +1,14 @@
+<div class="container">
+
+  <nav class="navbar navbar-light bg-primary">
+    <a class="navbar-brand" href="#">online-shopping</a>
+  </nav>
+
+  <hr />
+  <hr />
+
+  <div *ngFor="let product of products" class="list-group-item">
+    <app-product [value]="product"></app-product>
+  </div>
+
+</div>

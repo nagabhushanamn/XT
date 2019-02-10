@@ -1,5 +1,5 @@
 {
-  "name": "cart",
+  "name": "orders",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -7,15 +7,11 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "cacheman-redis": "^2.0.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
-    "flat": "^4.1.0",
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
-    "morgan": "~1.9.0",
-    "redis": "^2.8.0",
-    "redis-jsonify": "^1.2.0"
+    "morgan": "~1.9.0"
   }
 }

@@ -1,0 +1,63 @@
+
+1-directives
+-------------------
+
+3-types
+
+
+1- component  
+
+        ==> directive + template
+
+        i.e alwys gives new UI fragment
+
+        <component></component>
+
+2- structural
+
+        ==> to modify existing comp's template
+
+        <div *directive></div>
+
+        e.g
+
+            *ngIf
+            *ngFor
+            *ngSwitch
+            
+
+3- attribute
+
+       ==> to modify element attribute/property
+
+       e.g
+
+            ngClass
+
+
+2- data-binding
+--------------------
+
+3 types
+
+
+    1- interpolation  
+
+        syntax :  
+        
+            {{expression}}
+
+    2- property binding
+
+        syntax :
+
+        <element [prop]="expression"/>
+
+    3- event-binding
+
+        syntax :
+
+            <element (event-name)="handler($event)"/>    
+        
+
+
