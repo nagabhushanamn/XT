@@ -1,0 +1,209 @@
+
+
+
+
+Run Our First Hello World Docker Container
+------------------------------------------
+
+> docker images 
+
+> docker image ls
+
+> docker run busybox:1.24 echo "hello world"
+
+> docker images 
+
+> docker run busybox:1.24 echo "hello world"
+
+> docker run busybox:1.24 ls /
+
+> docker run -i -t busybox:1.24 
+> docker run -it busybox:1.24 
+
+/# ls
+
+/# touch a.txt
+
+/# ls
+
+/# exit
+
+> docker run -i -t busybox:1.24 
+
+/# ls
+
+
+
+Deep Dive into Docker Containers
+---------------------------------
+
+> docker run -d busybox:1.24  sleep 1000
+
+> docker ps
+> docker container ls
+> docker container -a
+> docker container --all
+
+> docker run -d --rm busybox:1.24  sleep 1
+
+> docker container --all
+
+> docker run -d --name hello_world busybox:1.24  
+
+> docker container -a
+
+> docker run -d busybox:1.24  sleep 100
+> docker inspect <image/container-id>
+
+
+
+Docker Port Mapping and Docker Logs Command
+---------------------------------------------
+
+
+> docker run -it -p 8888:8080 tomcat:8.0
+
+> docker run -it -d -p 8888:8080 tomcat:8.0
+
+> docker ps -a
+
+> docker logs <container-id>
+
+
+
+
+
+
+
+Docker Image Layers
+-----------------------------------------
+
+> docker history busybox:1.24
+
+
+
+
+way-1: Build Docker Images by using Docker Commit Command
+-----------------------------------------------
+
+
+> docker run -it debian:jessie
+
+/# ls
+
+/# git
+
+/# apt-get update && apt-get install -y git
+
+/# git
+
+/# exit
+
+> docker commit container_ID repository_name:tag
+
+> docker images
+
+> docker run -it repository_name:tag
+
+
+/# git
+
+
+
+way-2: Build Docker Images by Writing Dockerfile   (  )
+--------------------------------------------
+
+
+> touch Dockerfile
+
+    FROM debian:jessie
+    RUN apt-get update
+    RUN apt-get install -y git
+    RUN apt-get install -y vim
+
+
+> docker build -t repository_name/debian .
+
+> docker images
+
+
+
+
+Dockerfile In-depth
+--------------------------------------------
+
+
+ FROM debian:jessie
+ RUN  apt-get update && RUN apt-get install -y \
+      git \
+      vim
+
+------------------------------
+
+ FROM debian:jessie
+ RUN  apt-get update && RUN apt-get install -y \
+      git \
+      python \
+      vim
+
+------------------------------
+
+ FROM debian:jessie
+ RUN  apt-get update && RUN apt-get install -y \
+      git \
+      vim
+ CMD ["echo","hello world"]
+ 
+
+------------------------------
+
+ docker build -t repository_name . -no-cache=true
+
+------------------------------
+
+ FROM debian:jessie
+ RUN  apt-get update && RUN apt-get install -y \
+      git \
+      vim
+ COPY abc.txt /src/abc.txt
+ 
+
+
+
+
+
+
+ Push Docker Images to Docker Hub
+ ----------------------------------------------
+
+
+ > docker images
+
+ > docker tab <container_ID> repository/name
+
+> docker login
+
+> dicker push repository/name:tag
+
+
+
+
+Containerize a Simple Hello World Web Application
+-------------------------------------------------
+
+
+in container,
+
+> docker exec -it c3d1161235d8 /bin/sh
+
+/# cd /home/admin
+/# ps axu
+
+
+
+
+
+
+
+
+ 

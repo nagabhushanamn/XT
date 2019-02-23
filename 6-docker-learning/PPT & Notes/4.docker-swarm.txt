@@ -1,0 +1,141 @@
+
+
+
+docker swarm
+---------------
+
+Docker Swarm is a clustering and scheduling tool for Docker containers. 
+With Swarm, IT administrators and developers can establish and manage a cluster of Docker nodes
+as a single virtual system. 
+
+
+- docker swarm is a tool for container orchestration
+
+Lets take an example
+
+You have 100 containers
+
+You need to do
+
+    - Health check on every container
+    - Ensure all containers are up on every system
+    - Scaling the containers up or down depending on the load
+    - Adding updates/changes to all the  containers
+
+
+Orchestration   - managing and controllong multiple docker containers as single service
+Tools available - Docker Swarm, Kubernetes, Apache Mesos
+
+
+
+
+prerequisites
+
+    - Docker 1.13 or higher
+    - Docker Machine
+
+
+step-1 :   create Docker machines ( to act as nodes for docker swarm)
+           Create one machine as manager and others as workers
+
+           > docker-machine create --driver hyperv manager1
+           > docker-machine create --driver virtualbox manager1 
+
+
+            Running pre-create checks...
+            Error with pre-create check: "exit status 126"
+
+            > brew cask install virtualbox;
+
+step-2 : 
+
+        check machine created successfully
+
+            > docker-machine ls
+            > docker-machine ip manager1
+
+
+step-3 : SSH ( connect ) to docker machine
+
+            > docker-machine ssh manager1
+
+step-4 :
+
+        Initialize Docker swarm
+
+        > docker swarm init --advertise-addr MANAGER_IP
+        > docker node ls
+            - this command work only in swarm manager and not in worker
+
+step-5 :
+
+        Join workers in the swarm
+
+        - get command for joining as worker in manager node run command
+
+
+        > docker swarm join-token worker
+        > docker swarm join-token manager
+
+
+step-6 :
+
+        On manager run standard docker commands
+
+        > docker info
+
+        check swarm section, no of manager,worker etc
+        check swarm commands
+
+        
+
+step-7 :
+
+        Run containers on Docker swarm
+
+        > docker service create --replicas 6 -p 80:80 --name serviceName nginx
+
+        check the status
+
+        > docker service ls
+        > docker service ps serviceName
+
+step-8 :
+
+        Scale service up or Down
+
+
+        > docker service scale serviceName=2
+        > docker service scale serviceName=4
+
+
+        > docker service ps web1
+
+step-9 :
+
+
+        > docker node inspect worker1
+        > docker node inspect worker2
+        > docker node inspect self
+
+
+step-10 : update service`
+
+
+        > docker service update --image ngix:1.14 web1
+
+
+step-11 : Remove Service
+
+        > docker service rm serviceName
+
+
+
+        > docker swarm leave
+
+        > docker-machine stop worker1
+
+        > docker-machine rm worker1
+
+
+

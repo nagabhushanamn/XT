@@ -1,0 +1,32 @@
+
+
+
+   
+
+--------------------------------------------------
+
+OS           ==> linux
+Runtime      ==> Node.js
+tools        ==> NPM
+dependencies ==> express f.w , ........
+appln code   ==> ..
+ENV   var    ==>
+
+--------------------------------------------------
+
+
+  Docker
+
+        -> build
+        -> ship
+        -> run
+
+        
+
+--------------------------------------------------
+
+
+
+docker image name
+
+repository/image-name:latest

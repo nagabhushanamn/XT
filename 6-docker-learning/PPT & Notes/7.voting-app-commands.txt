@@ -1,0 +1,87 @@
+
+
+--------------------------------------------------------
+step-0 : build application images for every application
+--------------------------------------------------------
+
+git clone https://github.com/dockersamples/example-voting-app
+
+--------------------------------------------------------
+step-1 : build application images for every application
+--------------------------------------------------------
+
+docker build -t name:latest .
+
+--------------------------------------------------------
+step-2.1 : create & link containers without compose tool
+--------------------------------------------------------
+
+docker run -d redis 
+docker run -d -p 80:80 --link redis vote
+docker run -d --name db postgres:9.4
+docker run -d --name worker --link redis --link db worker
+docker run -d -p 8080:80 --name result --link db result
+
+
+--------------------------------------------------------
+step-2.2 : create & link containers with compose tool
+--------------------------------------------------------
+
+
+docker-compose.yml
+
+
+    version: '3'
+    services:
+        redis:
+            image: redis
+        vote:
+            image: vote
+            links:
+                - redis
+            ports:
+                - "80:80"
+        db:
+            image: postgres:9.4
+
+        worker:
+            image: worker
+            links:
+                - redis
+                - db
+        result:
+            image: result
+            links:
+                - db
+            ports:
+                -"8080:80"        
+
+
+
+--------------------------------------------------------
+step-2.3 : create & link containers with compose tool in swarm cluster
+--------------------------------------------------------
+
+
+E.g
+
+swarm  with 4 nodes
+
+
+  - vote-service   : 4 container
+  - result-service : 2 instances
+  - redis-service  : 1 container
+  - db             : 1 container
+
+
+
+
+--------------------------------------------------------
+
+    - swarm advances
+    - overlay network
+    - docker stack
+
+ ---------------------------------------------   
+
+   

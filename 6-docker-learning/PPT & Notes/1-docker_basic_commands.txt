@@ -1,0 +1,500 @@
+
+Level-1 : Getting started
+======================================
+
+Downloading the first Docker image
+------------------------------------
+
+docker pull hello-world
+docker images
+
+Running the first Docker container
+----------------------------------
+
+docker run hello-world
+
+//----------------------------------
+
+
+
+Level-2 : Handling Docker Containers
+====================================
+
+
+Working with Docker images
+---------------------------
+
+docker pull busybox
+docker pull busybox:1.24
+docker images
+
+docker pull thedockerbook/helloworld
+
+
+Searching Docker images
+-------------------------
+
+docker search mysql
+
+
+Working with an interactive container
+---------------------------------------
+
+docker run -i -t ubuntu:16.04 /bin/bash
+docker ps
+docker attach <container-name>
+
+
+
+
+Tracking changes inside containers
+--------------------------------------
+
+docker run -i -t ubuntu:16.04 /bin/bash
+
+
+> cd /home
+> ls -l
+> touch {abc,def,ghi}
+> ls -l
+
+docker diff <container-id>
+
+
+
+Controlling Docker containers
+---------------------------------------
+
+docker run -i -t ubuntu:16.04 /bin/bash
+
+docker stop <container-id>
+
+docker ps -a
+
+docker start <container-id>
+
+docker ps
+
+
+docker attach <container-id>
+
+
+> while true; do date; sleep 5; done
+
+
+docker pause <container-id>
+
+docker ps
+
+docker unpause <container-id>
+
+docker stop <container-id>
+
+
+
+Housekeeping containers
+----------------------------------------
+
+
+docker run -i -t --rm ubuntu:16.04 /bin/bash  
+
+docker ps -a
+
+docker rm <container-id>
+
+docker rm $(sudo docker ps -aq)
+
+
+docker rm $(sudo docker ps -aq -f state=exited ) 
+
+
+
+Building images from containers
+-----------------------------------------
+
+docker run -i -t ubuntu:16.04 /bin/bash
+
+> which wget
+
+> apt-get update
+
+> apt-get install -y wget
+
+> which wget
+
+
+docker diff <container-id>
+
+docker commit <container-id> learningdocker/ubuntu_wget
+
+docker images
+
+
+Launching a container as a daemon
+----------------------------------------------
+
+
+docker run -d ubuntu /bin/bash -c "while true; do date; sleep 5; done"
+
+sudo docker logs <container-id>
+
+
+
+
+ Level 3: Building Images
+ ==============================================
+
+
+Quick Overview on Dockerfile
+------------------------------
+
+[Dockerfile]
+
+    FROM busybox:latest
+    CMD echo Hello World!
+ 
+
+docker build .
+docker run <image-id>
+docker images
+
+
+docker tag <image-id> busyboxplus
+
+//or
+
+docker build -t busyboxplus .
+
+
+
+
+
+The Dockerfile build instructions
+---------------------------------
+
+
+
+ 1. FROM instruction
+
+
+        FROM <image>[:<tag>|@<digest>] 
+
+
+        e.g
+
+        FROM centos 
+
+        FROM ubuntu:16.04 
+
+
+2. The MAINTAINER instruction
+
+
+        MAINTAINER <author's detail> 
+
+        e.g
+
+        MAINTAINER Dr. Peter <peterindia@gmail.com> 
+
+
+3.  COPY <src> ... <dst> 
+
+
+        e.g
+
+        COPY html /var/www/html 
+
+        COPY httpd.conf magic /etc/httpd/conf/ 
+
+
+4. The ADD instruction
+
+
+        ADD <src> ... <dst> 
+
+        e.g
+
+        ADD web-page-config.tar /
+
+
+5. The ENV instruction
+
+
+        ENV <key> <value> 
+
+        e.g
+
+        ENV DEBUG_LVL 3 
+        ENV APACHE_LOG_DIR /var/log/apache 
+
+
+6. The ARG instruction
+
+
+        ARG <variable>[=<default value>] 
+
+        e.g
+
+        ARG usr 
+        ARG uid=1000 
+
+
+        $ docker build --build-arg usr=app --build-arg uid=100 .
+
+
+
+        The environment variables:
+
+        The environment variables declared using the ENV or ARG instruction can be used 
+        in the ADD, COPY, ENV, EXPOSE, LABEL, USER, WORKDIR, VOLUME, STOPSIGNAL, and ONBUILD instructions.
+
+        ARG BUILD_VERSION 
+        LABEL com.example.app.build_version=${BUILD_VERSION}      
+
+
+7. The USER instruction       
+
+
+        USER <UID>|<UName> 
+
+        e.g
+
+        USER 73 
+
+
+8. The WORKDIR instruction      
+
+        WORKDIR <dirpath> 
+
+        e.g
+
+        WORKDIR /app 
+        
+
+9. The VOLUME instruction
+
+        
+        VOLUME ["<mountpoint>"] 
+
+        VOLUME <mountpoint> 
+
+
+10. The EXPOSE instruction        
+
+
+        EXPOSE <port>[/<proto>] [<port>[/<proto>]...] 
+
+        e.g
+
+        EXPOSE 7373/udp 8080 
+
+
+11.  The LABEL instruction
+
+
+        LABEL <key-1>=<val-1> <key-2>=<val-2> ... <key-n>=<val-n> 
+
+        e.g
+
+        LABEL version="2.0"  
+              release-date="2016-08-05"  
+
+        LABEL org.label-schema.schema-version="1.0"  
+              org.label-schema.version="2.0"  
+              org.label-schema.description="Learning Docker Example"        
+
+12. The RUN instruction       
+
+        RUN <command>     
+        RUN ["<exec>", "<arg-1>", ..., "<arg-n>"]    
+
+        e.g
+
+        RUN echo "echo Welcome to Docker!" >> /root/.bashrc      
+
+        # Install apache2 package 
+        RUN apt-get update && \ 
+         apt-get install -y apache2 && \
+         apt-get clean   
+
+
+13. The CMD instruction         
+
+
+        CMD <command>
+        CMD ["<exec>", "<arg-1>", ..., "<arg-n>"] 
+
+        e.g
+
+
+        CMD ["echo", "Dockerfile CMD demo"] 
+
+
+14. The ENTRYPOINT instruction
+
+
+        ENTRYPOINT <command> 
+        ENTRYPOINT ["<exec>", "<arg-1>", ..., "<arg-n>"] 
+
+        e.g
+
+        ENTRYPOINT ["echo", "Dockerfile ENTRYPOINT demo"] 
+
+
+        $ sudo docker run -it --entrypoint="/bin/sh" <image>
+
+
+15. The HEALTHCHECK instruction
+
+
+
+        HEALTHCHECK [<options>] CMD <command> 
+
+        e.g
+
+        HEALTHCHECK --interval=5m --timeout=3s  
+        CMD curl -f http://localhost/ || exit 1 
+
+
+
+        HEALTHCHECK NONE 
+
+
+16. The ONBUILD instruction
+
+
+        ONBUILD <INSTRUCTION> 
+
+        e.g
+
+        ONBUILD ADD config /etc/appconfig 
+
+
+17. The STOPSIGNAL instruction
+
+
+        STOPSIGNAL <signal> 
+
+
+18. The SHELL instruction
+
+        SHELL ["<shell>", "<arg-1>", ..., "<arg-n>"] 
+
+
+
+
+
+The .dockerignore file
+------------------------
+
+
+.git 
+*.tmp 
+
+
+Docker image management
+-----------------------
+
+      ########################################### 
+      # Dockerfile to build an Apache2 image 
+      ########################################### 
+      # Base image is Ubuntu 
+      FROM ubuntu:14.04 
+      # Author: Dr. Peter 
+      MAINTAINER Dr. Peter <peterindia@gmail.com> 
+      # Install apache2 package 
+      RUN apt-get update &&  \
+         apt-get install -y apache2 && \  
+         apt-get clean 
+
+
+         
+
+docker build -t apache2 .
+docker history apache2
+
+
+
+Docker Hub
+-------------------------
+
+
+docker login
+
+
+Pushing images to Docker Hub
+-----------------------------
+
+
+
+docker run -i --name="containerforhub" -t ubuntu /bin/bash
+
+
+> mkdir mynewdir 
+> cd mynewdir 
+> echo 'this is my new container to make image and then push to hub' > mynewfile
+
+docker commit -m="NewImage for second edition" containerforhub  nagabhushanamn/imageforhub2
+docker push nagabhushanamn/imageforhub2 
+docker stop containerforhub 
+docker rm containerforhub
+docker rmi nagabhushanamn/imageforhub2
+docker run -i --name="newcontainerforhub" -t nagabhushanamn/imageforhub2 /bin/bash 
+
+> cat /mynewdir/mynewfile
+
+
+
+by Dockerfile
+
+
+
+        ########################################### 
+        # Dockerfile to build a new image 
+        ########################################### 
+        # Base image is Ubuntu 
+        FROM ubuntu:16.04 
+        # Author: Dr. Peter 
+        MAINTAINER Dr. Peter <peterindia@gmail.com> 
+        # create 'mynewdir' and 'mynewfile' 
+        RUN mkdir mynewdir 
+        RUN touch /mynewdir/mynewfile 
+        # Write the message in file 
+        RUN echo 'this is my new container to make image and then push to hub'  
+        >/mynewdir/mynewfile 
+
+
+docker build -t="nagabhushanamn/dockerfileimageforhub1" .
+docker run -i --name="dockerfilecontainerforhub" -t nagabhushanamn/dockerfileimageforhub1 /bin/bash 
+
+> cat /mynewdir/mynewfile 
+
+docker push nagabhushanamn/dockerfileimageforhub1
+
+ 
+ Private repositories on Docker Hub
+ ------------------------------------
+
+ docker run -p 5000:5000 -d registry 
+
+ docker tag <image>  localhost:5000/nagabhushanamn/dockerfileimageforhub1
+
+ docker push localhost:5000/nagabhushanamn/dockerfileimageforhub1
+
+
+ Running Docker Registry and pushing the image
+ -----------------------------------------------
+
+
+docker run -d -p 5000:5000 --restart=always --name  registry registry:2 
+docker ps -a 
+docker pull hello-world 
+docker tag hello-world localhost:5000/hello-world
+docker images 
+docker push localhost:5000/hello-world 
+docker pull localhost:5000/hello-world 
+
+docker stop registry && docker rm -v registry 
+
+docker run -d -p 5000:5000 --restart=always --name registry -v 
+

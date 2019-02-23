@@ -1,0 +1,42 @@
+
+
+
+docker overview
+---------------------
+
+
+
+  why do you need docker ?
+
+        
+        - Compatability/Dependency
+        - Long setup time
+        - Different Dev/Test/Prod environments
+
+
+  What can it do ?
+
+
+        - Containerize Applications
+        - Run each service with its own dependencies in separate containers
+
+
+  Containers ?
+
+        - isolated environments
+        - have thier own processes + networks + mounts
+
+
+
+-----------------------------------------------------------
+
+basic Docker Commands
+
+
+docker run ubuntu
+docker ps
+
+
+
+
+

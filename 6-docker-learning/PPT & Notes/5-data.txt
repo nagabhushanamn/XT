@@ -1,0 +1,39 @@
+
+
+Manage data in Docker
+--------------------
+
+    - https://docs.docker.com/storage/
+    
+
+    $ docker volume create my-vol
+    $ docker volume ls
+
+    $ docker volume inspect my-vol
+
+
+    Start a container with a volume
+
+
+    $ docker run -d \
+    --name devtest \
+    --mount source=myvol2,target=/app \
+    nginx:latest
+
+    $ docker inspect devtest
+
+    $ docker container stop devtest
+    $ docker container rm devtest
+    $ docker volume rm myvol2
+
+
+    Start a service with volumes
+
+    $ docker service create -d \
+    --replicas=4 \
+    --name devtest-service \
+    --mount source=myvol2,target=/app \
+    nginx:latest
+
+    $ docker service ps devtest-service
+    $ docker service rm devtest-service

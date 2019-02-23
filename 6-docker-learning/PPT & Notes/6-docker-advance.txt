@@ -1,0 +1,57 @@
+
+
+----------------------------------------------
+docker platform
+----------------------------------------------
+
+
+    - Docker Daemon / server  ==> to  manage things
+    - REST API
+    - Docker CLI
+
+
+docker -H remote-docker-engine:2375
+
+ e.g   
+
+docker -H=10.123.2.1:2375 run nginx
+
+
+----------------------------------------------
+
+- docker uses 'namespaces' for isolation
+
+
+    => PID
+    => C-groups    
+
+
+            docker run --cpu=.5 ubuntu
+            docker run --memory=100m ubuntu
+
+
+e.g
+
+docker run -d -p 8080:8080 tomcat:8.0
+docker ps
+docker exec <container-id> ps -eaf
+
+on host,
+
+ps -eaf | grep docker-java-home
+
+
+----------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
