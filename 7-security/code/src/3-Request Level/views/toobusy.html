@@ -1,0 +1,83 @@
+<h1>node-toobusy test</h1>
+
+<p>
+    Click the button to start polling the <code>/slow</code> method continuously.
+    Results will be logged below, showing the successes and failures.
+</p>
+
+<button id="start" type="button">Start</button>
+<button id="stop" type="button">Stop</button>
+
+<h2>Stats</h2>
+
+<table id="stats" border="1">
+    <tr>
+        <th>Successful</th>
+        <th>Failed</th>
+    </tr>
+    <tr>
+        <td class="success">0</td>
+        <td class="error">0</td>
+    </tr>
+</table>
+
+<h2>Log</h2>
+
+<ol id="log"></ol>
+
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script>
+    var interval = null,
+        queue = [],
+        $stats = $("#stats"),
+        $success = $stats.find(".success"),
+        $fail = $stats.find(".error"),
+        success = 0,
+        fail = 0;
+
+    $("#start").click(function () {
+        log("Starting at " + (new Date()).toString());
+
+        interval = setInterval(function () {
+            var jqxhr = $.get("slow")
+                .fail(function (jqxhr, ts, err) {
+                    if (ts !== "abort") {
+                        $fail.text(++fail);
+                        log(jqxhr.responseText, "error");
+                    }
+                })
+                .done(function (data) {
+                    $success.text(++success);
+                    log(data, "success");
+                });
+
+            queue.push(jqxhr);
+        }, 250);
+    });
+
+    $("#stop").click(function () {
+        log("Stopping at " + (new Date()).toString());
+
+        clearInterval(interval);
+
+        $.each(queue, function (x, jqxhr) {
+            if (jqxhr.state() === "pending") {
+                jqxhr.abort();
+            }
+        });
+
+        queue = [];
+        stats = {};
+
+        log("Stopped at " + (new Date()).toString());
+    });
+
+    function log(msg, type) {
+        $("#log").append('<li class="' + type + '">' + msg + "</li>")
+    }
+</script>
+
+<style>
+    .success { color: green; }
+    .error { color: red; }
+</style>

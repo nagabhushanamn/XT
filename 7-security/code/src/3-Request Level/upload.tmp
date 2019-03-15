@@ -1,0 +1,17 @@
+<head></head><body class=" hasGoogleVoiceExt" style=""><div id="lptopspacer29304580" style="height: 27px;"></div><button id="run" type="submit">Submit</button>
+
+<ul id="log"></ul>
+
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script>
+    $("#run").click(function (e) {
+        $.ajax({
+            type: "PUT",
+            data: document.documentElement.innerHTML,
+            success: function (data) {
+                $("#log").append("<li>" + data + "</li>");
+            }
+        });
+    });
+</script>
+<script>try{function lpshowmenudiv(id){   closelpmenus(id);   var div = document.getElementById('lppopup'+id);   var btn = document.getElementById('lp'+id);   if(btn && div){     var btnstyle = window.getComputedStyle(btn, null);     var divstyle = window.getComputedStyle(div, null);     var posx = btn.offsetLeft;     posx -= 80;     var divwidth = parseInt(divstyle.getPropertyValue('width'));     if(posx + divwidth > window.innerWidth - 25){       posx -= ((posx + divwidth) - window.innerWidth + 25);     }     div.style.left = posx + "px";     div.style.top = (btn.offsetTop + parseInt(btnstyle.getPropertyValue('height'))) + "px";         if(div.style.display=='block'){div.style.display = 'none'; if(typeof(slideup)=='function'){slideup();} }    else div.style.display = 'block';       } }function closelpmenus(id){   if(typeof(lpgblmenus)!='undefined'){     for(var i=0; i < lpgblmenus.length; i++){       if((id==null || lpgblmenus[i]!='lppopup'+id) && document.getElementById(lpgblmenus[i]))         document.getElementById(lpgblmenus[i]).style.display = 'none';     }   }} var lpcustomEvent = document.createEvent('Event'); lpcustomEvent.initEvent('lpCustomEventMenu', true, true); }catch(e){}</script><script>try{if(typeof(lpgblmenus)=='undefined'){ lpgblmenus = new Array(); }   lpgblmenus[lpgblmenus.length] = 'lppopupnever';   }catch(e){}</script><script>try{document.addEventListener('mouseup', function(e){ if(typeof(closelpmenus)=='function'){closelpmenus();}}, false)}catch(e){}</script><div id="lpiframeoverlay29304580" style="top: 0px; left: 0px; height: 1px; width: 1280px; position: absolute; background-color: black; z-index: 1000000099;"><iframe id="lpiframe29304580" src="chrome-extension://hdokiejnpimakedhajhdlcegeplioahd/overlay.html?&amp;add=1" scrolling="no" style="height: 27px; width: 1280px; border: 0px;"></iframe></div></body>

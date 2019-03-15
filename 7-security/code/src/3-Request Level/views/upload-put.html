@@ -1,0 +1,16 @@
+<button id="run" type="submit">Submit</button>
+
+<ul id="log"></ul>
+
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script>
+    $("#run").click(function (e) {
+        $.ajax({
+            type: "PUT",
+            data: document.documentElement.innerHTML,
+            success: function (data) {
+                $("#log").append("<li>" + data + "</li>");
+            }
+        });
+    });
+</script>

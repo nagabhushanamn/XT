@@ -1,0 +1,25 @@
+{
+  "name": "securing-node-applications",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A guide to securing node.js applications",
+  "main": "app.js",
+  "scripts": {},
+  "keywords": [
+    "node",
+    "security",
+    "guide",
+    "book"
+  ],
+  "author": "Dominic Barnes <dominic@dbarnes.info>",
+  "license": "GPL",
+  "dependencies": {
+    "express": "~3.4.0",
+    "passport": "~0.1.17",
+    "passport-local": "~0.1.6",
+    "toobusy": "~0.2.3",
+    "helmet": "~0.1.0",
+    "marked": "~0.2.9",
+    "express-validator": "~0.7.0"
+  }
+}

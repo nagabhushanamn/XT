@@ -1,0 +1,76 @@
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+<h1>Request Size Limit Tests</h1>
+
+<form method="post">
+    <h2>
+        Content-Type: <code>application/x-www-form-urlencoded</code>
+        <small>(limit: <code>1kb</code>)</small>
+    </h2>
+    <p>Upload lots of HTML Form data (default text should be too large, delete some text to bring it under the limits)</p>
+    <textarea name="test" rows="10" cols="100">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas iaculis posuere ornare. Integer eu felis a libero rutrum commodo. Proin iaculis dignissim dolor eget sollicitudin. Proin feugiat urna vitae magna faucibus, sit amet interdum nisl fringilla. Integer porttitor, massa quis consequat ornare, est tortor ultrices felis, vel rutrum lacus mauris vel neque. Maecenas aliquet quam nec orci pellentesque, sit amet cursus nunc bibendum. Nunc neque neque, semper eu interdum id, sodales nec nisi. Pellentesque sodales justo metus. Aenean nisi arcu, pellentesque at vestibulum eu, ornare vel est. Sed elementum sed dolor sed gravida. Morbi eget ornare massa. Nunc convallis odio risus, eu rhoncus quam aliquam sit amet. Praesent sit amet molestie lacus. Nulla ornare sed purus eu dignissim. Curabitur quam mauris, tincidunt vitae massa sit amet, rutrum convallis nibh. Sed commodo posuere eros. Maecenas lobortis mollis ultricies. Nullam non egestas sapien, id aliquam lacus. Curabitur a orci urna. Praesent cursus nullam.</textarea>
+    <button type="submit">Submit</button>
+</form>
+
+<form method="post" enctype="multipart/form-data">
+    <h2>
+        Content-Type: <code>multipart/form-data</code>
+        <small>(limit: <code>5mb</code>)</small>
+    </h2>
+    <p>Upload a File: (the server should not accept an upload larger than 5MB)</p>
+    <input type="file" name="testfile">
+    <button type="submit">Submit</button>
+</form>
+
+<form id="json" method="post">
+    <h2>
+        Content-Type: <code>application/json</code>
+        <small>(limit: <code>1kb</code>)</small>
+    </h2>
+    <p>Upload lots of JSON data (default text should be too large, delete some text to bring it under the limits)</p>
+    <textarea name="test" rows="10" cols="100">{"test":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas iaculis posuere ornare. Integer eu felis a libero rutrum commodo. Proin iaculis dignissim dolor eget sollicitudin. Proin feugiat urna vitae magna faucibus, sit amet interdum nisl fringilla. Integer porttitor, massa quis consequat ornare, est tortor ultrices felis, vel rutrum lacus mauris vel neque. Maecenas aliquet quam nec orci pellentesque, sit amet cursus nunc bibendum. Nunc neque neque, semper eu interdum id, sodales nec nisi. Pellentesque sodales justo metus. Aenean nisi arcu, pellentesque at vestibulum eu, ornare vel est. Sed elementum sed dolor sed gravida. Morbi eget ornare massa. Nunc convallis odio risus, eu rhoncus quam aliquam sit amet. Praesent sit amet molestie lacus. Nulla ornare sed purus eu dignissim. Curabitur quam mauris, tincidunt vitae massa sit amet, rutrum convallis nibh. Sed commodo posuere eros. Maecenas lobortis mollis ultricies. Nullam non egestas sapien, id aliquam lacus. Curabitur a orci urna. Praesent cursus nullam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas iaculis posuere ornare. Integer eu felis a libero rutrum commodo. Proin iaculis dignissim dolor eget sollicitudin. Proin feugiat urna vitae magna faucibus, sit amet interdum nisl fringilla. Integer porttitor, massa quis consequat ornare, est tortor ultrices felis, vel rutrum lacus mauris vel neque. Maecenas aliquet quam nec orci pellentesque, sit amet cursus nunc bibendum. Nunc neque neque, semper eu interdum id, sodales nec nisi. Pellentesque sodales justo metus. Aenean nisi arcu, pellentesque at vestibulum eu, ornare vel est. Sed elementum sed dolor sed gravida. Morbi eget ornare massa. Nunc convallis odio risus, eu rhoncus quam aliquam sit amet. Praesent sit amet molestie lacus. Nulla ornare sed purus eu dignissim. Curabitur quam mauris, tincidunt vitae massa sit amet, rutrum convallis nibh. Sed commodo posuere eros. Maecenas lobortis mollis ultricies. Nullam non egestas sapien, id aliquam lacus. Curabitur a orci urna. Praesent cursus nullam."}</textarea>
+    <button type="submit">Submit</button>
+</form>
+
+<form id="html" method="post">
+    <h2>
+        Content-Type: <code>text/html</code>
+        <small>(limit: <code>2kb</code>)</small>
+    </h2>
+    <p>Upload lots of data as HTML (default text should be too large, delete some text to bring it under the limits)</p>
+    <textarea name="test" rows="10" cols="100">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas iaculis posuere ornare. Integer eu felis a libero rutrum commodo. Proin iaculis dignissim dolor eget sollicitudin. Proin feugiat urna vitae magna faucibus, sit amet interdum nisl fringilla. Integer porttitor, massa quis consequat ornare, est tortor ultrices felis, vel rutrum lacus mauris vel neque. Maecenas aliquet quam nec orci pellentesque, sit amet cursus nunc bibendum. Nunc neque neque, semper eu interdum id, sodales nec nisi. Pellentesque sodales justo metus. Aenean nisi arcu, pellentesque at vestibulum eu, ornare vel est. Sed elementum sed dolor sed gravida. Morbi eget ornare massa. Nunc convallis odio risus, eu rhoncus quam aliquam sit amet. Praesent sit amet molestie lacus. Nulla ornare sed purus eu dignissim. Curabitur quam mauris, tincidunt vitae massa sit amet, rutrum convallis nibh. Sed commodo posuere eros. Maecenas lobortis mollis ultricies. Nullam non egestas sapien, id aliquam lacus. Curabitur a orci urna. Praesent cursus nullam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas iaculis posuere ornare. Integer eu felis a libero rutrum commodo. Proin iaculis dignissim dolor eget sollicitudin. Proin feugiat urna vitae magna faucibus, sit amet interdum nisl fringilla. Integer porttitor, massa quis consequat ornare, est tortor ultrices felis, vel rutrum lacus mauris vel neque. Maecenas aliquet quam nec orci pellentesque, sit amet cursus nunc bibendum. Nunc neque neque, semper eu interdum id, sodales nec nisi. Pellentesque sodales justo metus. Aenean nisi arcu, pellentesque at vestibulum eu, ornare vel est. Sed elementum sed dolor sed gravida. Morbi eget ornare massa. Nunc convallis odio risus, eu rhoncus quam aliquam sit amet. Praesent sit amet molestie lacus. Nulla ornare sed purus eu dignissim. Curabitur quam mauris, tincidunt vitae massa sit amet, rutrum convallis nibh. Sed commodo posuere eros. Maecenas lobortis mollis ultricies. Nullam non egestas sapien, id aliquam lacus. Curabitur a orci urna. Praesent cursus nullam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas iaculis posuere ornare. Integer eu felis a libero rutrum commodo. Proin iaculis dignissim dolor eget sollicitudin. Proin feugiat urna vitae magna faucibus, sit amet interdum nisl fringilla. Integer porttitor, massa quis consequat ornare, est tortor ultrices felis, vel rutrum lacus mauris vel neque. Maecenas aliquet quam nec orci pellentesque, sit amet cursus nunc bibendum. Nunc neque neque, semper eu interdum id, sodales nec nisi. Pellentesque sodales justo metus. Aenean nisi arcu, pellentesque at vestibulum eu, ornare vel est. Sed elementum sed dolor sed gravida. Morbi eget ornare massa. Nunc convallis odio risus, eu rhoncus quam aliquam sit amet. Praesent sit amet molestie lacus. Nulla ornare sed purus eu dignissim. Curabitur quam mauris, tincidunt vitae massa sit amet, rutrum convallis nibh. Sed commodo posuere eros. Maecenas lobortis mollis ultricies. Nullam non egestas sapien, id aliquam lacus. Curabitur a orci urna. Praesent cursus nullam.</textarea>
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+jQuery(function ($) {
+    $("#json").submit(function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            data: $(this).find("textarea").val(),
+            complete: function (xhr) {
+                console.log(xhr);
+                $(document.body).html("<pre>" + xhr.responseText + "</pre>");
+            }
+        });
+    });
+
+    $("#html").submit(function (e) {
+        var html = $(this).find("textarea").val();
+
+        e.preventDefault();
+
+        $.ajax({
+            type: "POST",
+            contentType: "text/html",
+            data: html,
+            complete: function (xhr) {
+                $(document.body).html(xhr.responseText + html);
+            }
+        });
+    });
+});
+</script>
