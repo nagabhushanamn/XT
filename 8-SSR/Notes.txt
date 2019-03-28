@@ -1,0 +1,114 @@
+
+
+
+In 'Client-side rendering', your browser downloads a minimal HTML page. 
+It renders the JavaScript like React and fills the content into it.
+
+
+'Server-side rendering', on the other hand, renders the React components on the server.
+The output is HTML content.
+
+
+You can combine these two to create an isomorphic app.
+
+
+
+Cons of Rendering React on the Server
+--------------------------------------
+SSR can improve performance if your application is small. 
+    But it can also degrade performance if it is heavy.
+It increases response time (and it can be worse if the server is busy).
+It increases response size, which means the page takes longer to load.
+It increases the complexity of the application.
+
+
+When should you use Server Side Rendering?
+-----------------------------------------
+
+- 1. SEO 👀
+
+- 2. Improve performance 🚀
+
+
+How?
+
+ On Node.js runtime , we have many template engines support with express
+
+  like
+
+      - hbs
+      - hogan
+      - jade
+
+but
+
+  we can also use 
+
+    - React 
+    - Angular
+    - Vue
+    - ...
+
+  
+
+------------------------------------------
+'package.json'
+------------------------------------------
+
+
+"scripts": {
+    "start": "node index.js",
+    "pack": "webpack --config webpack.config.js",
+    "babel": "babel src -d views",
+    "build": "npm run pack && npm run babel"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  }
+
+------------------------------------------
+ .babelrc
+------------------------------------------
+
+
+{
+  "presets": ["@babel/env", "@babel/react"]
+}  
+
+
+------------------------------------------
+webpack.config.js
+------------------------------------------
+
+const path = require('path');
+module.exports = {
+  entry: {
+    client: './src/client.js',
+    bundle: './src/bundle.js'
+  },
+  output: {
+    path: path.resolve(__dirname, 'assets'),
+    filename: "[name].js"
+  },
+  module: {
+    rules: [
+      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+    ]
+ }
+}
+
+

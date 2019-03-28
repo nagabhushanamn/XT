@@ -1,0 +1,33 @@
+
+
+
+
+
+The goal of caching is to save your server the stress of having 
+to do the same thing over and over again that results in the same output
+
+
+#1 Simple server side cache for Express.js with Node.js
+
+#2 How to Optimize Node Requests with Simple Caching Strategies
+
+
+
+NGINX is used by over 40% of the world’s busiest websites
+and is an open-source reverse proxy server, load balancer, HTTP cache, and web server. 
+
+
+
+
+upstream project{
+    server localhost:8081;
+}
+server{
+    listen 80;
+    location / {
+        proxy_pass http://project;
+    }
+    location ~* \.(css|js|gif)${
+        expires 168h
+    }
+}
