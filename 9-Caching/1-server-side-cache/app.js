@@ -15,7 +15,17 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-let cache = (duration) => {
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+// app.use('/', indexRouter);
+// app.use('/users', usersRouter);
+
+
+let cacheMiddleware = (duration) => {
   return (req, res, next) => {
     let key = '__express__' + req.originalUrl || req.url
     let cachedBody = mcache.get(key)
@@ -33,24 +43,13 @@ let cache = (duration) => {
   }
 }
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-// app.use('/', indexRouter);
-// app.use('/users', usersRouter);
-
-
-
-app.get('/', cache(10), (req, res) => {
+app.get('/', cacheMiddleware(10), (req, res) => {
   setTimeout(() => {
     res.render('index', { title: 'Hey', message: 'Hello there', date: new Date() })
   }, 5000) //setTimeout was used to simulate a slow processing request
 })
 
-app.get('/user/:id', cache(10), (req, res) => {
+app.get('/user/:id', cacheMiddleware(10), (req, res) => {
   setTimeout(() => {
     if (req.params.id == 1) {
       res.json({ id: 1, name: "John" })

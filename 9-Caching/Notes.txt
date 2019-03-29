@@ -1,10 +1,17 @@
 
 
+Reference:
+-----------------
+https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching
+https://www.digitalocean.com/community/tutorials/web-caching-basics-terminology-http-headers-and-caching-strategies
+https://devcenter.heroku.com/articles/increasing-application-performance-with-http-cache-headers
 
 
 
 The goal of caching is to save your server the stress of having 
 to do the same thing over and over again that results in the same output
+
+
 
 
 #1 Simple server side cache for Express.js with Node.js
@@ -13,8 +20,17 @@ to do the same thing over and over again that results in the same output
 
 
 
+
 NGINX is used by over 40% of the world’s busiest websites
 and is an open-source reverse proxy server, load balancer, HTTP cache, and web server. 
+
+
+
+
+
+
+
+
 
 
 
